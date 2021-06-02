@@ -35,6 +35,55 @@
     color: #fff;
     background-color: #0062cc;
 }
+
+.login-form-1 .login{
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+    width: 100%;
+}
+
+.login-form-1 .login input,.login-form-1 .login button{
+    width: 100%;
+    height: 48px;
+    margin-bottom: 1rem;
+    border-radius: 2rem;
+    overflow: hidden;
+}
+
+.login-form-1 .login .form-group{
+    width: 100%;
+}
+
+.login-form-1 .login .form-group div{
+    width:100%;
+}
+
+.login-form-1 .login .form-group div button{
+    width: 100%;
+    border: 1px solid rgba(206,206, 206, 0.20);
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    position: relative;
+}
+
+.login-form-1 .login .form-group div button div{
+    height: 48px;
+    box-shadow: none;
+    max-width: min-content;
+}
+
+.login-form-1 .login .form-group div button span{
+    position: absolute;
+    left: 0;
+    margin-left: auto;
+    right: 0;
+    margin-right: auto;
+    height:100%;
+    text-align: center;
+}
+
 .login-form-2 .btnSubmit{
     background-color: #fff;
     color: #0062cc;
