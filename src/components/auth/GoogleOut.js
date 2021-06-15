@@ -1,23 +1,25 @@
 import React from 'react';
-import { GoogleLogin } from 'react-google-login';
+import { GoogleLogout } from 'react-google-login';
 
 
 const clientId = `180373228972-5vtvfovgfevufi4mhc4l9mu8qud6n5qh.apps.googleusercontent.com`;
 
 
-export const GoogleIn = () => {
+export const GoogleOut = () => {
 
-    const onSuccess = (res) => {
-        console.log('[Login Success] CurrentUser:', res.profileObj);
-    }
+    const onSuccess = () => {
+        console.log('Logout made successfully');
+        alert('Logout made successfully ✌');
+    };
 
     return (
         <div>
-            <GoogleLogin
+            <GoogleLogout
                 clientId={clientId}
                 buttonText="Logout"
-                onLogoutSuccess={onSuccess}                
-            />
+                onLogoutSuccess={onSuccess}
+            ></GoogleLogout>
         </div>
-    )
+    );
 }
+

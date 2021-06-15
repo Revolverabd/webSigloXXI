@@ -1,10 +1,11 @@
 import { combineReducers } from 'redux';
 
-import { uiReducer } from './uiReducer';
 import { authReducer } from './authReducer';
+import { authReducerGoogle } from './authReducerGoogle';
+import { clientUiReducer } from './clientUiReducer';
 
 export const rootReducer = combineReducers({
-    ui: uiReducer,
-    auth: authReducer
-
+    auth: authReducer,
+    authGoogle: authReducerGoogle,
+    clientUi: clientUiReducer
 });
