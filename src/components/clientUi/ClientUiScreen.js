@@ -1,9 +1,10 @@
-import React, { useEffect, useReducer } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { clientStartLoading } from '../../actions/clientUiAction';
+import { clientStartLoading, deletePrecheckout } from '../../actions/clientUiAction';
 import { NavBar } from '../ui/NavBar';
 
 import { ProductCard } from './ProductCard';
+import { Counter } from './Counter';
 
 import "./clientUiStyle.css"
 
@@ -19,13 +20,18 @@ export const ClientUiScreen = () => {
     let data4 = products.filter(data => data.Categoria === "PASTAS");
     let data5 = products.filter(data => data.Categoria === "POSTRES");
 
-
-
     useEffect(() => {
 
+        localStorage.setItem('listProduct', JSON.stringify(listProduct));
         dispatch(clientStartLoading());
 
-    }, [dispatch])
+    }, [dispatch, listProduct])
+
+    const handleClickDelete = (productId) => {
+        // e.preventDefault();
+        dispatch(deletePrecheckout(productId));
+        // console.log(productId)
+    }
 
     return (
 
@@ -110,16 +116,31 @@ export const ClientUiScreen = () => {
                                         key={oneProduct.id}
                                         className="list-group-item"
                                     >
-                                        <p className="text-center m-cero">{i + 1}. {oneProduct.name}</p>
-                                        <p className="text-center m-cero">{i + 1}. {oneProduct.precio}</p>
+                                        <p className="text-center m-cero"> {oneProduct.name}</p>
+                                        <p className="text-center m-cero"> Valor unitario ${oneProduct.precio}</p>
 
-                                        <button className="btn btn-danger">
+                                        <Counter 
+                                        precio={oneProduct.precio}
+                                        
+                                        />
+                                        <button
+                                            className="btn btn-danger"
+                                            type="submit"
+                                            onClick={() => handleClickDelete(oneProduct.id)}
+                                        >
                                             Quitar
                                         </button>
                                     </li>
                                 ))
                             }
                         </ul>
+                        <button
+                            className="btn btn-danger"
+                            type="submit"
+                        // onClick={() => handleClickDelete(oneProduct.id)}
+                        >
+                            Pagar
+                        </button>
                     </div>
                 </div>
             </div>

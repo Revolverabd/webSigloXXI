@@ -1,7 +1,6 @@
-import { fetchNotToken, fetchWithToken } from '../helpers/fetch';
+import { fetchNotToken } from '../helpers/fetch';
 import { types } from '../types/types';
-import Swal from 'sweetalert2';
-
+// import Swal from 'sweetalert2';
 
 
 export const clientStartLoading = () => {
@@ -29,7 +28,21 @@ export const addPrecheckout = (product) => {
 
         try {
 
-            dispatch(precheckoutLoaded(product));
+            dispatch(precheckoutLoadedAdd(product));
+
+        } catch (error) {
+            console.log(error);
+        }
+    }
+}
+
+export const deletePrecheckout = (productId) => {
+
+    return async (dispatch) => {
+
+        try {
+
+            dispatch(precheckoutLoadedDel(productId));
 
         } catch (error) {
             console.log(error);
@@ -42,7 +55,12 @@ const clientUiLoaded = (products) => ({
     payload: products
 })
 
-const precheckoutLoaded = (product) => ({
+const precheckoutLoadedAdd = (product) => ({
     type: types.clientAddProduct,
     payload: product
+})
+
+const precheckoutLoadedDel = (productId) => ({
+    type: types.clientDeleteProduct,
+    payload: productId
 })

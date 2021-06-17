@@ -23,7 +23,9 @@ export const ProductCard = ({
         precio: PrecioNeto
     }
 
-    const handleClick = (e) => {
+    // let product = JSON.parse(localStorage.getItem('listProduct')) || [];    
+
+    const handleClickAdd = (e) => {
 
         e.preventDefault();
 
@@ -31,6 +33,8 @@ export const ProductCard = ({
     }
 
     return (
+
+
 
         <div class="card">
             <img class="card-image" src={NombreImagen} alt="image" />
@@ -41,7 +45,7 @@ export const ProductCard = ({
             <button
                 class="boton btn"
                 type="submit"
-                onClick={handleClick}
+                onClick={handleClickAdd}
 
             >
                 Agregar

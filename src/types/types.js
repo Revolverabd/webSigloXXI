@@ -7,6 +7,7 @@ export const types = {
     clientUiLoaded: '[clientUi] client loaded',
     
     clientAddProduct: '[clientUi] add product',
+    clientDeleteProduct: '[clientUi] delete product',
 
     authLogin: '[auth] login',
     authStartLogin: '[auth] Start login',

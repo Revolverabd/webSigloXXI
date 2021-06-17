@@ -5,7 +5,7 @@ const initialState = {
     listProduct: []
 };
 
-export const clientUiReducer = (state = initialState, action) => {
+export const clientUiReducer = (state = initialState, action, init) => {
 
     switch (action.type) {
 
@@ -17,10 +17,18 @@ export const clientUiReducer = (state = initialState, action) => {
 
         case types.clientAddProduct:
 
-            const todos = [...state.listProduct,   action.payload]
+            const todos = [...state.listProduct, action.payload];
             return {
                 ...state,
                 listProduct: todos
+            }
+
+        case types.clientDeleteProduct:
+
+            const productDel = state.listProduct.filter(listProduct => listProduct.id !== action.payload);
+            return {
+                ...state,
+                listProduct: productDel
             }
 
         default:
