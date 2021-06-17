@@ -2,7 +2,7 @@ import { types } from "../types/types";
 
 const initialState = {
     products: [],
-    activeEvent: null
+    listProduct: []
 };
 
 export const clientUiReducer = (state = initialState, action) => {
@@ -15,6 +15,13 @@ export const clientUiReducer = (state = initialState, action) => {
                 products: [...action.payload]
             }
 
+        case types.clientAddProduct:
+
+            const todos = [...state.listProduct,   action.payload]
+            return {
+                ...state,
+                listProduct: todos
+            }
 
         default:
             return state;

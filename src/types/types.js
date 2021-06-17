@@ -5,6 +5,8 @@ export const types = {
     // authCheking: '[auth] Cheking login state',
 
     clientUiLoaded: '[clientUi] client loaded',
+    
+    clientAddProduct: '[clientUi] add product',
 
     authLogin: '[auth] login',
     authStartLogin: '[auth] Start login',

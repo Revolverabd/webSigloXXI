@@ -1,9 +1,7 @@
-import React from 'react';
-import Card from 'react-bootstrap/Card'
-import Button from 'react-bootstrap/Button'
+import { useDispatch } from 'react-redux';
+import { addPrecheckout } from '../../actions/clientUiAction';
 
 import './clientUiStyle.css';
-
 
 export const ProductCard = ({
     Id,
@@ -15,21 +13,39 @@ export const ProductCard = ({
     IdImagen,
     NombreImagen
 
-
 }) => {
+
+    const dispatch = useDispatch();
+
+    const product = {
+        id: Id,
+        name: Nombre,
+        precio: PrecioNeto
+    }
+
+    const handleClick = (e) => {
+
+        e.preventDefault();
+
+        dispatch(addPrecheckout(product));
+    }
+
     return (
 
-        <div className="card ms-3 animate__animated animate__fadeIn">
-            <Card style={{ width: '18rem' }}>
-                <img className="Card" variant="top" src={NombreImagen} />
-                <Card.Body>
-                    <Card.Title>{Nombre}</Card.Title>
-                    <Card.Text>
-                        {Descripcion}
-                    </Card.Text>
-                    <Button variant="primary">Go somewhere</Button>
-                </Card.Body>
-            </Card>
+        <div class="card">
+            <img class="card-image" src={NombreImagen} alt="image" />
+            <div class="card-text" >
+                <h2>{Nombre}</h2>
+                <p>{Descripcion}</p>
+            </div>
+            <button
+                class="boton btn"
+                type="submit"
+                onClick={handleClick}
+
+            >
+                Agregar
+            </button>
         </div>
 
     )
