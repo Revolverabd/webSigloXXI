@@ -1,25 +1,54 @@
 .divcard{
-    height: 10%;
-    width: 95%;
+    height: 90%;
+    width: 31%;
   }
+  .paddingtop{
+    padding-top: 20px;
+    
+  }
+  .box {
+    background-image: url('https://world-pizza.it/wp-content/uploads/2019/05/pizza4-slider-bg.jpg');
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    width: 99%;
+    filter: blur(6px);
+}
+  .row {
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+  .addScroll{
+    overflow-y:auto;
+    height: 100vh;
+  }
+.divcard2{
+    height: 100%;
+    width: 100%; 
+}
+
   .pepito{
-    padding-right: 2px;
+    padding-right: 40px;
   }
   .prueba{
-    background-color: black;
+    background-color: rgba(0, 0, 0, 0.431);
   }
   .card {
+    
+    background-image: url('https://th.bing.com/th/id/Rceb06b6918fd9edaac10effa5b3bc23f?rik=DvdaQAge2E3zww&pid=ImgRaw');
     max-width: 250px;
     max-height: 500px;
     border-radius: 18px;
-    background: black;
     font-family: verdana;
     text-align: center;
   
     transition: 0.5s ease;
     cursor: pointer;
-    margin:30px;
+    margin:29px;
   }
+  
   
   .card-image {
     
@@ -77,11 +106,35 @@
   /* estilos de clientUiScreen.js */
   
   #titulo{
-    font-family:'Courier New', Courier, monospace;
+    font-family:Arial, Helvetica, sans-serif;
     font-weight: 700;
-    color: black;
-    font-size: 100px;
+    background-color: rgba(0, 0, 0, 0.616);
+    border-radius: 10px;
+    color: white;
+    font-size: 50px;
     text-align: center;
+    
+    width: 100%;
+    
+  }
+  #titulo2{
+    font-family:Arial, Helvetica, sans-serif;
+    font-weight: 700;
+    background-color: rgba(255, 255, 255, 0.294);
+    border-radius: 10px;
+    color: white;
+    font-size: 30px;
+    text-align: center;
+    
+  }
+
+  .imagenlistaproducto{
+    background-color: rgba(255, 255, 255, 0.219);
+    color: white;
+    border-top:3px solid black;
+    border-bottom:3px solid black;
+    padding-bottom: 15px;
+    width: 100%; 
     
   }
     

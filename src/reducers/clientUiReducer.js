@@ -5,7 +5,7 @@ const initialState = {
     listProduct: []
 };
 
-export const clientUiReducer = (state = initialState, action, init) => {
+export const clientUiReducer = (state = initialState, action) => {
 
     switch (action.type) {
 
@@ -30,6 +30,25 @@ export const clientUiReducer = (state = initialState, action, init) => {
                 ...state,
                 listProduct: productDel
             }
+
+        case types.increaseByOneProduct:
+            return {
+                ...state,
+                listProduct: [...action.payload]
+            }
+
+        case types.decreaseByOneProduct:
+            return {
+                ...state,
+                listProduct: [...action.payload]
+            }
+
+        case types.oneResetProduct:
+            return {
+                ...state,
+                listProduct: [...action.payload]
+            }
+
 
         default:
             return state;

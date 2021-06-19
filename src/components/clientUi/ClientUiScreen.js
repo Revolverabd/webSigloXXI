@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { clientStartLoading, deletePrecheckout } from '../../actions/clientUiAction';
+import { clientStartLoading } from '../../actions/clientUiAction';
 import { NavBar } from '../ui/NavBar';
 
 import { ProductCard } from './ProductCard';
@@ -12,7 +12,7 @@ export const ClientUiScreen = () => {
 
     const dispatch = useDispatch();
 
-    const { products, listProduct } = useSelector(state => state.clientUi);
+    const { products } = useSelector(state => state.clientUi);
 
     let data1 = products.filter(data => data.Categoria === "PLATOS DE LA CASA");
     let data2 = products.filter(data => data.Categoria === "BEBESTIBLES");
@@ -22,25 +22,21 @@ export const ClientUiScreen = () => {
 
     useEffect(() => {
 
-        localStorage.setItem('listProduct', JSON.stringify(listProduct));
         dispatch(clientStartLoading());
 
-    }, [dispatch, listProduct])
-
-    const handleClickDelete = (productId) => {
-        // e.preventDefault();
-        dispatch(deletePrecheckout(productId));
-        // console.log(productId)
-    }
+    }, [dispatch])
 
     return (
 
-        <div class="content">
+        <div className=" divimagecabecera addScroll ">
+            <div className="box"> </div>
             <NavBar />
-            <div class="row pepito"  >
-                <div class="col-md-8" >
+
+            <div className="row"  >
+                <div className="col-8 col-sm-8 col-md-8 paddingtop " >
                     <h1 id="titulo">PLATOS DE LA CASA</h1>
-                    <div class="card-columns">
+
+                    <div className="row ">
 
                         {
                             data1.map(product => (
@@ -65,75 +61,50 @@ export const ClientUiScreen = () => {
                             }
                         </div>
                     </div>
-                    <div>
-                        <h1 id="titulo">Carnes</h1>
-                        <div className="card-columns">
-                            {
-                                data3.map(product => (
-                                    <ProductCard
-                                        key={product.Id}
-                                        {...product}
-                                    />
-                                ))
-                            }
-                            <div>
-                            </div>
-                        </div>
-                        <h1 id="titulo">Pastas</h1>
-                        <div className="card-columns">
-                            {
-                                data4.map(product => (
-                                    <ProductCard
-                                        key={product.Id}
-                                        {...product}
-                                    />
-                                ))
-                            }
-                            <div>
-                            </div>
-                        </div>
-                        <h1 id="titulo">Postres</h1>
-                        <div className="card-columns">
-                            {
-                                data5.map(product => (
-                                    <ProductCard
-                                        key={product.Id}
-                                        {...product}
-                                    />
-                                ))
-                            }
-                        </div>
+
+                    <h1 id="titulo">Carnes</h1>
+                    <div className="card-columns">
+                        {
+                            data3.map(product => (
+                                <ProductCard
+                                    key={product.Id}
+                                    {...product}
+                                />
+                            ))
+                        }
                     </div>
+                    <h1 id="titulo">Pastas</h1>
+                    <div className="card-columns">
+                        {
+                            data4.map(product => (
+                                <ProductCard
+                                    key={product.Id}
+                                    {...product}
+                                />
+                            ))
+                        }
+                    </div>
+                    <h1 id="titulo">Postres</h1>
+                    <div className="card-columns">
+                        {
+                            data5.map(product => (
+                                <ProductCard
+                                    key={product.Id}
+                                    {...product}
+                                />
+                            ))
+                        }
+                    </div>
+
                 </div>
-                <div class="col-md-4 prueba" >
 
-                    <div>Lista de productos ({listProduct.length})
+                <div className="col-4 col-sm-4 col-md-4 prueba paddingtop" >
 
-                        <ul className="list-group list-group-flush">
-                            {
-                                listProduct.map((oneProduct, i) => (
-                                    <li
-                                        key={oneProduct.id}
-                                        className="list-group-item"
-                                    >
-                                        <p className="text-center m-cero"> {oneProduct.name}</p>
-                                        <p className="text-center m-cero"> Valor unitario ${oneProduct.precio}</p>
+                    <div className="position-fixed divcard overflow-auto ">
+                        <h1 id="titulo2">Lista de productos</h1>
 
-                                        <Counter 
-                                        precio={oneProduct.precio}
-                                        
-                                        />
-                                        <button
-                                            className="btn btn-danger"
-                                            type="submit"
-                                            onClick={() => handleClickDelete(oneProduct.id)}
-                                        >
-                                            Quitar
-                                        </button>
-                                    </li>
-                                ))
-                            }
-                        </ul>
+                        <Counter />
+
                         <button
                             className="btn btn-danger"
                             type="submit"
@@ -145,5 +116,8 @@ export const ClientUiScreen = () => {
                 </div>
             </div>
         </div>
+
+
+
     )
 }

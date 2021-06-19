@@ -15,7 +15,6 @@ export const authReducerGoogle = (state = initialState, action) => {
                 checking: false
             }
 
-
         default:
             return state;
     }
