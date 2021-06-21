@@ -20,7 +20,7 @@ Modal.setAppElement('#root');
 export const ModalPay = () => {
 
     const dispatch = useDispatch();
-    const { modal } = useSelector(state => state.clientUi)
+    const { modalPay } = useSelector(state => state.clientUi)
 
 
     const closeModal = () => {
@@ -29,7 +29,7 @@ export const ModalPay = () => {
 
     return (
         <Modal
-            isOpen={modal}
+            isOpen={modalPay}
             // onAfterOpen={afterOpenModal}
             onRequestClose={closeModal}
             closeTimeoutMS={200}
@@ -39,42 +39,12 @@ export const ModalPay = () => {
             contentLabel="Example Modal"
         >
             <h1>Pre Cuenta</h1>
-<br />
+            <br />
             <form className="container">
 
-                {/* <div className="form-group">
-                    <label>Fecha y hora inicio</label>
-                    <input className="form-control" placeholder="Fecha inicio" />
-                </div> */}
-
-                {/* <div className="form-group">
-                    <label>Fecha y hora fin</label>
-                    <input className="form-control" placeholder="Fecha inicio" />
-                </div> */}
 
                 <hr />
-                {/* <div className="form-group">
-                    <label>Titulo y notas</label>
-                    <input
-                        type="text"
-                        className="form-control"
-                        placeholder="Título del evento"
-                        name="title"
-                        autoComplete="off"
-                    />
-                    <small id="emailHelp" className="form-text text-muted">Una descripción corta</small>
-                </div> */}
 
-                {/* <div className="form-group">
-                    <textarea
-                        type="text"
-                        className="form-control"
-                        placeholder="Notas"
-                        rows="5"
-                        name="notes"
-                    ></textarea>
-                    <small id="emailHelp" className="form-text text-muted">Información adicional</small>
-                </div> */}
 
                 <button
                     type="submit"

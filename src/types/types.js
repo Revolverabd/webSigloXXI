@@ -20,6 +20,9 @@ export const types = {
     oneResetProduct: '[clientUi] reset one product',
     uiOpenModal: '[clientUi] openModal',
     uiCloseModal: '[clientUi] closeModal',
+    uiOpenModalPedido: '[clientUi] openModal Pedido',
+    uiCloseModalPedido: '[clientUi] closeModal Pedido',
+    sendPedido: '[clientUi] closeModal Pedido',
 
     diningUiLoaded: '[diningRoom] dining loaded', 
     diningAddTable: '[diningRoom] add dining',

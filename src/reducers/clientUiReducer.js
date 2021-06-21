@@ -1,9 +1,11 @@
 import { types } from "../types/types";
 
 const initialState = {
-    modal: false,
+    modalPay: false,
+    modalPedido: false,
     products: [],
-    listProduct: []
+    listProduct: [],
+    pedido: []
 };
 
 export const clientUiReducer = (state = initialState, action) => {
@@ -53,12 +55,25 @@ export const clientUiReducer = (state = initialState, action) => {
         case types.uiOpenModal:
             return {
                 ...state,
-                modal: true            
+                modalPay: true
             }
+
         case types.uiCloseModal:
             return {
                 ...state,
-                modal: false
+                modalPay: false
+            }
+
+        case types.uiOpenModalPedido:
+            return {
+                ...state,
+                modalPedido: true
+            }
+
+        case types.uiCloseModalPedido:
+            return {
+                ...state,
+                modalPedido: false
             }
 
 

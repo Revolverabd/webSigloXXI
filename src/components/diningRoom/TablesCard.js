@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux';
 import {
-    diningStartLoading,
+    // diningStartLoading,
     changeStateTable
 } from '../../actions/diningUiAction';
 

@@ -6,7 +6,10 @@ import { NavBar } from '../ui/NavBar';
 import { ProductCard } from './ProductCard';
 import { Counter } from './Counter';
 import { ModalPay } from './ModalPay';
+import { ModalPedido } from './ModalPedido';
+
 import { uiOpenModal } from '../../actions/clientUiAction';
+import { uiOpenModalPedido } from '../../actions/clientUiAction';
 
 import "./clientUiStyle.css"
 
@@ -14,7 +17,13 @@ export const ClientUiScreen = () => {
 
     const dispatch = useDispatch();
 
-    const { products } = useSelector(state => state.clientUi);
+    const { products, listProduct } = useSelector(state => state.clientUi);
+
+    let btnState = false;
+
+    if (listProduct.length === 0) {
+        btnState = true;
+    }
 
     let data1 = products.filter(data => data.Categoria === "PLATOS DE LA CASA");
     let data2 = products.filter(data => data.Categoria === "BEBESTIBLES");
@@ -22,8 +31,12 @@ export const ClientUiScreen = () => {
     let data4 = products.filter(data => data.Categoria === "PASTAS");
     let data5 = products.filter(data => data.Categoria === "POSTRES");
 
-    const handleOpenmodal = () => {
+    const handleOpenModal = () => {
         dispatch(uiOpenModal());
+    }
+
+    const handlePedidoModal = () => {
+        dispatch(uiOpenModalPedido());
     }
 
     useEffect(() => {
@@ -112,15 +125,27 @@ export const ClientUiScreen = () => {
                         <Counter />
 
                         <button
+                            disabled={btnState}
                             className="btn btn-danger"
                             type="submit"
-                            onClick={handleOpenmodal}
+                            onClick={handleOpenModal}
                         >
                             Pagar
                         </button>
+                        <button
+                            disabled={btnState}
+                            className="btn btn-info"
+                            type="submit"
+                            onClick={handlePedidoModal}
+
+                        >
+                            Realizar pedido
+                        </button>
 
                         <ModalPay />
-                   
+
+                        <ModalPedido />
+
                     </div>
                 </div>
             </div>

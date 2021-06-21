@@ -104,9 +104,9 @@ export const Counter = () => {
                         className="imagenlistaproducto"
                     >
                         <p className="text-center m-cero"> {oneProduct.name}</p>
-                        <p className="text-center m-cero">Precio Unitario {oneProduct.precio}</p>
+                        <p className="text-center m-cero"> ${oneProduct.precio}</p>
                         <p className="text-center m-cero">Sub Total {oneProduct.subTotal}</p>
-                        <p className="text-center m-cero">Sub Total {oneProduct.counter}</p>
+                        <p className="text-center m-cero">Cantidad {oneProduct.counter}</p>
 
                         <button
                             className="btn btn-secondary"

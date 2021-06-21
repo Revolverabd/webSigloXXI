@@ -95,6 +95,22 @@ export const resetProduct = (product) => {
 export const uiOpenModal = () => ({type: types.uiOpenModal});
 export const uiCloseModal = () => ({type: types.uiCloseModal});
 
+export const uiOpenModalPedido = () => ({type: types.uiOpenModalPedido});
+export const uiCloseModalPedido = () => ({type: types.uiCloseModalPedido});
+
+export const uiSendPedido = (pedido) => {
+
+    return async (dispatch) => {
+
+        try {
+
+            dispatch(sendPedido(pedido));
+
+        } catch (error) {
+            console.log(error);
+        }
+    }
+}
 
 const clientUiLoaded = (products) => ({
     type: types.clientUiLoaded,
@@ -124,6 +140,12 @@ const decreaseByOneProduct = (product) => ({
 const oneResetProduct = (product) => ({
     type: types.oneResetProduct,
     payload: product
+})
+
+
+const sendPedido = (pedido) => ({
+    type: types.sendPedido,
+    payload: pedido
 })
 
 
