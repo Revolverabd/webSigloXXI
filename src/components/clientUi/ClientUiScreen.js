@@ -118,7 +118,9 @@ export const ClientUiScreen = () => {
                         >
                             Pagar
                         </button>
+
                         <ModalPay />
+                   
                     </div>
                 </div>
             </div>

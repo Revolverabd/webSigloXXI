@@ -1,0 +1,30 @@
+.imgTablesCard {
+    margin: 0px auto;
+    background: url('https://image.flaticon.com/icons/png/512/677/677252.png') blue no-repeat;
+    background-size: 80%;
+    background-position: center;
+    width: 250px;
+    height: 250px;
+    border-radius: 20px;
+    position: relative;
+}
+
+.centered {
+    text-align: center;
+}
+
+.padingAll {
+    padding: 10px;
+}
+
+#numeroMesa {
+    color: white;
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#deleteStyle {
+    list-style: none;
+}
