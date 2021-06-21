@@ -10,7 +10,7 @@ export const Carrousel = () => {
                 <Carousel.Item>
                     <img 
                         className="d-block w-100"
-                        src="https://res.cloudinary.com/rsxxi/image/upload/v1623261201/uaotyvwtfwc0oopbawgl.jpg"
+                        src="https://res.cloudinary.com/rsxxi/image/upload/v1624153111/Carrousel/pie_rokfz1.webp"
                         alt="First slide"
                     />
                     <Carousel.Caption>
@@ -22,7 +22,7 @@ export const Carrousel = () => {
                 <Carousel.Item>
                     <img
                         className="d-block w-100"
-                        src="https://res.cloudinary.com/rsxxi/image/upload/v1623261201/uaotyvwtfwc0oopbawgl.jpg"
+                        src="https://res.cloudinary.com/rsxxi/image/upload/v1624153111/Carrousel/pie_rokfz1.webp"
                         alt="Second slide"
                     />
 
@@ -35,7 +35,7 @@ export const Carrousel = () => {
                 <Carousel.Item>
                     <img
                         className="d-block w-100"
-                        src="https://res.cloudinary.com/rsxxi/image/upload/v1623261201/uaotyvwtfwc0oopbawgl.jpg"
+                        src="https://res.cloudinary.com/rsxxi/image/upload/v1624153111/Carrousel/pie_rokfz1.webp"
                         alt="Third slide"
                     />
 

@@ -1,6 +1,7 @@
 import { types } from "../types/types";
 
 const initialState = {
+    modal: false,
     products: [],
     listProduct: []
 };
@@ -47,6 +48,17 @@ export const clientUiReducer = (state = initialState, action) => {
             return {
                 ...state,
                 listProduct: [...action.payload]
+            }
+
+        case types.uiOpenModal:
+            return {
+                ...state,
+                modal: true            
+            }
+        case types.uiCloseModal:
+            return {
+                ...state,
+                modal: false
             }
 
 

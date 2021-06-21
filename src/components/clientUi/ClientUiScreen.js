@@ -5,6 +5,8 @@ import { NavBar } from '../ui/NavBar';
 
 import { ProductCard } from './ProductCard';
 import { Counter } from './Counter';
+import { ModalPay } from './ModalPay';
+import { uiOpenModal } from '../../actions/clientUiAction';
 
 import "./clientUiStyle.css"
 
@@ -19,6 +21,10 @@ export const ClientUiScreen = () => {
     let data3 = products.filter(data => data.Categoria === "CARNES");
     let data4 = products.filter(data => data.Categoria === "PASTAS");
     let data5 = products.filter(data => data.Categoria === "POSTRES");
+
+    const handleOpenmodal = () => {
+        dispatch(uiOpenModal());
+    }
 
     useEffect(() => {
 
@@ -108,10 +114,11 @@ export const ClientUiScreen = () => {
                         <button
                             className="btn btn-danger"
                             type="submit"
-                        // onClick={() => handleClickDelete(oneProduct.id)}
+                            onClick={handleOpenmodal}
                         >
                             Pagar
                         </button>
+                        <ModalPay />
                     </div>
                 </div>
             </div>

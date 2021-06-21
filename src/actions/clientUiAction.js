@@ -92,6 +92,8 @@ export const resetProduct = (product) => {
     }
 }
 
+export const uiOpenModal = () => ({type: types.uiOpenModal});
+export const uiCloseModal = () => ({type: types.uiCloseModal});
 
 
 const clientUiLoaded = (products) => ({
@@ -123,4 +125,6 @@ const oneResetProduct = (product) => ({
     type: types.oneResetProduct,
     payload: product
 })
+
+
 
