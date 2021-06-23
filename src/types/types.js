@@ -28,6 +28,5 @@ export const types = {
     diningAddTable: '[diningRoom] add dining',
     changeState: '[diningRoom] change state table'
 
-
 }
 

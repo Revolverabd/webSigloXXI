@@ -1,7 +1,6 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import {
-    // diningStartLoading,
-    changeStateTable
+    changeStateTable,
 } from '../../actions/diningUiAction';
 
 
@@ -20,7 +19,7 @@ export const TablesCard = ({
 
     const dispatch = useDispatch();
 
-    const { active } = useSelector(state => state.diningRoom);
+    // const { active } = useSelector(state => state.diningRoom);
 
     const table = {
         CapacidadMesa: CapacidadMesa,
@@ -28,41 +27,36 @@ export const TablesCard = ({
         IdEstadoMesa: EstadoMesa
     }
 
-    console.log(active.btn1)
+    const dataPedido = {
+        numMesa: NumeroMesa,
+        pedidoMesa: 'Default',
+        total: 0,
+        estado: 1
+    }
+
 
 
     const handleClickEstadoHabilitada = () => {
 
         table.IdEstadoMesa = 1;
-        console.log(table);
         dispatch(changeStateTable(NumeroMesa, table));
     }
 
     const handleClickEstadoOcupada = () => {
 
-        const active = {
-            btn1: { state: false, css: "boton-state-deactive" },
-            btn2: { state: true, css: "boton-state-active" },
-            btn3: { state: false, css: "boton-state-deactive" },
-            btn4: { state: false, css: "boton-state-deactive" }
-        }
-
         table.IdEstadoMesa = 3;
-        console.log(table);
-        dispatch(changeStateTable(NumeroMesa, table, active));
+        dispatch(changeStateTable(NumeroMesa, table, dataPedido));
     }
 
     const handleClickEstadoDeshabilitada = () => {
 
         table.IdEstadoMesa = 2;
-        console.log(table);
         dispatch(changeStateTable(NumeroMesa, table));
     }
 
     const handleClickEstadoReservada = () => {
 
         table.IdEstadoMesa = 4;
-        console.log(table);
         dispatch(changeStateTable(NumeroMesa, table));
     }
 
@@ -76,38 +70,41 @@ export const TablesCard = ({
                     <div>
                         <span id="" >Mesa Nº {NumeroMesa}</span>
                     </div>
-
                 </div>
                 <div >
                     <button
-                        className={active.btn1.css}
+                        // className={ }
+                        className="boton-state-deactive"
                         type="submit"
                         onClick={handleClickEstadoHabilitada}
-                        disabled={active.btn1.state}
+                    // disabled={ false }
                     >
                         Habilitada
                     </button>
                     <button
-                        className={active.btn2.css}
+                        // className={active[0].btn2.css}
+                        className="boton-state-active"
                         type="submit"
                         onClick={handleClickEstadoOcupada}
-                        disabled={active.btn2.state}
+                    // disabled={true}
                     >
                         Asignada
                     </button>
                     <button
-                        className={active.btn3.css}
+                        // className={active[0].btn3.css}
+                        className="boton-state-deactive"
                         type="submit"
                         onClick={handleClickEstadoDeshabilitada}
-                        disabled={active.btn3.state}
+                    // disabled={active[0].btn3.state}
                     >
                         Deshabilitada
                     </button>
                     <button
-                        className={active.btn4.css}
+                        // className={active[0].btn4.css}
+                        className="boton-state-deactive"
                         type="submit"
                         onClick={handleClickEstadoReservada}
-                        disabled={active.btn4.state}
+                    // disabled={active[0].btn4.state}
                     >
                         Reservada
                     </button>

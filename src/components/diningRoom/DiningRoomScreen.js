@@ -15,7 +15,6 @@ export const DiningRoomScreen = () => {
 
     const orderTables = tables.sort((a, b) => (a.NumeroMesa - b.NumeroMesa));
 
-
     useEffect(() => {
 
         dispatch(diningStartLoading());
@@ -24,7 +23,6 @@ export const DiningRoomScreen = () => {
 
     return (
         <div>
-
             <NavBarDashboar />
             <h1>Dining Room</h1>
 
