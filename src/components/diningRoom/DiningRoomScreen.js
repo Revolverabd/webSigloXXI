@@ -14,7 +14,8 @@ export const DiningRoomScreen = () => {
     const { tables } = useSelector(state => state.diningRoom);
 
     const orderTables = tables.sort((a, b) => (a.NumeroMesa - b.NumeroMesa));
-    //inicio
+
+
     useEffect(() => {
 
         dispatch(diningStartLoading());
@@ -31,7 +32,7 @@ export const DiningRoomScreen = () => {
                 {
                     orderTables.map((table) => (
                         <li id="deleteStyle" 
-                            key={table.id}
+                            key={table.Id}
                         >
                             <TablesCard
                                 key={table.Id}
@@ -44,24 +45,6 @@ export const DiningRoomScreen = () => {
             </ul>
         </div>
 
-        // <div >
-        //     <NavBarDashboar />
-        //     <h1>Dining Room</h1>
-        //     <div className="card-columns">
-
-        //         {
-        //             tables.map(table => (
-        //                 <TablesCard
-        //                     key={table.Id}
-        //                     {...table}
-        //                 />
-
-        //             ))
-
-        //         }
-        //         <span>Estado {tables.EstadoMesa}</span>
-        //     </div>
-        // </div>
     )
 }
 

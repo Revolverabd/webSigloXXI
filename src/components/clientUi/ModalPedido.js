@@ -44,11 +44,23 @@ export const ModalPedido = () => {
     const closeModal = () => {
         dispatch(uiCloseModalPedido());
     }
-    
+
     const handleSendPedido = () => {
 
+        let pedido = listProduct.map(function (product) {
 
-        // dispatch(uiSendPedido());
+            let lista = `name: ${product.name}, counter:${product.counter}`;
+
+            return lista;
+
+        });
+
+        pedido = (JSON.stringify(pedido));
+        pedido = JSON.parse(pedido)
+
+
+        console.log(pedido);
+        
     }
 
     return (
@@ -58,32 +70,31 @@ export const ModalPedido = () => {
             onRequestClose={closeModal}
             closeTimeoutMS={200}
             style={customStyles}
-            className="modal"
+            className="modal scroll-modal"
             overlayClassName="modal-fondo"
             contentLabel="Example Modal"
         >
             <h1>Pedido</h1>
             <br />
+            <div>
+                <ul className=" ">
+                    {
+                        listProduct.map((oneProduct) => (
 
-            <ul className=" ">
-                {
-                    listProduct.map((oneProduct) => (
+                            <li
+                                key={oneProduct.id}
+                                className=""
+                            >
+                                <p className="text-center m-cero"> {oneProduct.name}</p>
+                                <p className="text-center m-cero"> ${oneProduct.precio}</p>
+                                <p className="text-center m-cero">Sub Total {oneProduct.subTotal}</p>
+                                <p className="text-center m-cero">Cantidad {oneProduct.counter}</p>
 
-                        <li
-                            key={oneProduct.id}
-                            className=""
-                        >
-                            <p className="text-center m-cero"> {oneProduct.name}</p>
-                            <p className="text-center m-cero"> ${oneProduct.precio}</p>
-                            <p className="text-center m-cero">Sub Total {oneProduct.subTotal}</p>
-                            <p className="text-center m-cero">Cantidad {oneProduct.counter}</p>
-
-                        </li>
-                    ))
-                }
-            </ul>
-
-
+                            </li>
+                        ))
+                    }
+                </ul>
+            </div>
 
 
             <div className="container">

@@ -25,7 +25,7 @@ export const diningStartLoading = () => {
     }
 }
 
-export const changeStateTable = (numeroMesa, data) => {
+export const changeStateTable = (numeroMesa, data, active) => {
 
     return async (dispatch) => {
 
@@ -36,7 +36,7 @@ export const changeStateTable = (numeroMesa, data) => {
             const resp = await fetchNotToken('mesas/all');
             const body = await resp.json();
 
-            dispatch(changeState(body));
+            dispatch(changeState(body, active));
 
 
         } catch (error) {
@@ -55,6 +55,6 @@ const diningUiLoaded = (tables) => ({
 
 const changeState = (tables) => ({
     type: types.changeState,
-    payload: tables
+    payload: tables,
 
 })
