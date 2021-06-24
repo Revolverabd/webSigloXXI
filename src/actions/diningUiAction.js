@@ -27,7 +27,12 @@ export const changeStateTable = (numeroMesa, data, dataPedido) => {
 
         try {
 
-            await fetchNotToken('pedido/add',dataPedido, 'POST');
+            console.log(data)
+
+            if(data.IdEstadoMesa === 3 ||  data.IdEstadoMesa === 4){
+                await fetchNotToken('pedidos/add',dataPedido, 'POST');
+            }
+
             await fetchNotToken('mesas/upd/' + numeroMesa, data, 'PUT');
             
             const resp = await fetchNotToken('mesas/all');

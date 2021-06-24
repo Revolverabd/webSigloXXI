@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { clientStartLoading } from '../../actions/clientUiAction';
 import { NavBar } from '../ui/NavBar';
 
 import { ProductCard } from './ProductCard';
@@ -8,19 +7,29 @@ import { Counter } from './Counter';
 import { ModalPay } from './ModalPay';
 import { ModalPedido } from './ModalPedido';
 
-import { uiOpenModal } from '../../actions/clientUiAction';
-import { uiOpenModalPedido } from '../../actions/clientUiAction';
+import {
+    clientPedidoLoading,
+    clientStartLoading,
+    uiOpenModal,
+    uiOpenModalPedido,
+    establecerPedido
+} from '../../actions/clientUiAction';
 
 import "./clientUiStyle.css"
 
 export const ClientUiScreen = () => {
 
     const dispatch = useDispatch();
+    const dispatch2 = useDispatch();
+    const dispatch3 = useDispatch();
 
-    const { products, listProduct } = useSelector(state => state.clientUi);
+    const { products, listProduct, pedido } = useSelector(state => state.clientUi);
+
+    if (pedido[0].estado === 0) {
+        dispatch3(establecerPedido(pedido[0].numMesa));
+    }
 
     let btnState = false;
-
     if (listProduct.length === 0) {
         btnState = true;
     }
@@ -41,9 +50,13 @@ export const ClientUiScreen = () => {
 
     useEffect(() => {
 
+        if (pedido[0].estado === 9) {
+            dispatch2(clientPedidoLoading());
+        }
+
         dispatch(clientStartLoading());
 
-    }, [dispatch])
+    }, [dispatch2, dispatch]);
 
     return (
 

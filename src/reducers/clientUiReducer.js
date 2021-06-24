@@ -4,8 +4,8 @@ const initialState = {
     modalPay: false,
     modalPedido: false,
     products: [],
-    listProduct: [],
-    pedido: []
+    pedido: [{ id: "123", numMesa: 999, pedidoMesa: "lalal", total: 0, estado: 9, nombreEmpleado: "tulio" }],
+    listProduct: []
 };
 
 export const clientUiReducer = (state = initialState, action) => {
@@ -16,6 +16,18 @@ export const clientUiReducer = (state = initialState, action) => {
             return {
                 ...state,
                 products: [...action.payload]
+            }
+
+        case types.clientUiPedidoLoaded:
+            return {
+                ...state,
+                pedido: [...action.payload]
+            }
+
+        case types.establecePedidoLoaded:
+            return {
+                ...state,
+                pedido: [...action.payload]
             }
 
         case types.clientAddProduct:

@@ -31,10 +31,8 @@ export const TablesCard = ({
         numMesa: NumeroMesa,
         pedidoMesa: 'Default',
         total: 0,
-        estado: 1
+        estado: 0
     }
-
-
 
     const handleClickEstadoHabilitada = () => {
 
@@ -73,38 +71,30 @@ export const TablesCard = ({
                 </div>
                 <div >
                     <button
-                        // className={ }
                         className="boton-state-deactive"
                         type="submit"
                         onClick={handleClickEstadoHabilitada}
-                    // disabled={ false }
                     >
                         Habilitada
                     </button>
                     <button
-                        // className={active[0].btn2.css}
-                        className="boton-state-active"
+                        className="boton-state-deactive"
                         type="submit"
                         onClick={handleClickEstadoOcupada}
-                    // disabled={true}
                     >
                         Asignada
                     </button>
                     <button
-                        // className={active[0].btn3.css}
                         className="boton-state-deactive"
                         type="submit"
                         onClick={handleClickEstadoDeshabilitada}
-                    // disabled={active[0].btn3.state}
                     >
                         Deshabilitada
                     </button>
                     <button
-                        // className={active[0].btn4.css}
                         className="boton-state-deactive"
                         type="submit"
                         onClick={handleClickEstadoReservada}
-                    // disabled={active[0].btn4.state}
                     >
                         Reservada
                     </button>
