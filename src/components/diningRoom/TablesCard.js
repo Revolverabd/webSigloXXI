@@ -28,12 +28,13 @@ export const TablesCard = ({
     }
 
     const dataPedido = {
-        numMesa: NumeroMesa,
-        pedidoMesa: 'Default',
-        total: 0,
-        estado: 0
+        numMesa: NumeroMesa, 
+        pedidoMesa: "NO ASIGNADO", 
+        total: 0, 
+        estado: 0, 
+        estadoCocina:"NO ASIGNADO" 
     }
-
+    
     const handleClickEstadoHabilitada = () => {
 
         table.IdEstadoMesa = 1;

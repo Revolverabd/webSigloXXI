@@ -28,11 +28,14 @@ export const changeStateTable = (numeroMesa, data, dataPedido) => {
         try {
 
             console.log(data)
+            
+            //FALTA IF DE CONFIRMACIÓN DE ESTADO
 
             if(data.IdEstadoMesa === 3 ||  data.IdEstadoMesa === 4){
                 await fetchNotToken('pedidos/add',dataPedido, 'POST');
             }
-
+            
+            
             await fetchNotToken('mesas/upd/' + numeroMesa, data, 'PUT');
             
             const resp = await fetchNotToken('mesas/all');

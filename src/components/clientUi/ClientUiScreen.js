@@ -12,7 +12,8 @@ import {
     clientStartLoading,
     uiOpenModal,
     uiOpenModalPedido,
-    establecerPedido
+    establecerPedido,
+    clientPedidosLoadingState
 } from '../../actions/clientUiAction';
 
 import "./clientUiStyle.css"
@@ -22,9 +23,11 @@ export const ClientUiScreen = () => {
     const dispatch = useDispatch();
     const dispatch2 = useDispatch();
     const dispatch3 = useDispatch();
+    const dispatch4 = useDispatch();
 
     const { products, listProduct, pedido } = useSelector(state => state.clientUi);
 
+    //establece la mesa asignada al terminal
     if (pedido[0].estado === 0) {
         dispatch3(establecerPedido(pedido[0].numMesa));
     }
@@ -50,10 +53,13 @@ export const ClientUiScreen = () => {
 
     useEffect(() => {
 
-        if (pedido[0].estado === 9) {
+        // mantiene el estado del pedido mientras no se encuentra una mesa asignada a este terminal
+        if (pedido[0].estado === 10) {
             dispatch2(clientPedidoLoading());
+        } else {
+            dispatch4(clientPedidosLoadingState());
         }
-
+        // dispatch3(establecerPedido(pedido[0].numMesa));
         dispatch(clientStartLoading());
 
     }, [dispatch2, dispatch]);
@@ -66,6 +72,10 @@ export const ClientUiScreen = () => {
 
             <div className="row"  >
                 <div className="col-8 col-sm-8 col-md-8 paddingtop " >
+
+                    <h1> MESA {pedido[0].numMesa}</h1>
+                    <h1> ATENDIDO POR {pedido[0].nombreEmpleado}</h1>
+
                     <h1 id="titulo">PLATOS DE LA CASA</h1>
 
                     <div className="row ">

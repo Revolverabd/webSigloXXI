@@ -22,9 +22,9 @@ export const types = {
     uiCloseModal: '[clientUi] closeModal',
     uiOpenModalPedido: '[clientUi] openModal Pedido',
     uiCloseModalPedido: '[clientUi] closeModal Pedido',
-    sendPedido: '[clientUi] closeModal Pedido',
     clientUiPedidoLoaded: '[clientUi] load Pedido',
     establecePedidoLoaded: '[clientUi] estabklece pedido',
+    sendPedido: '[clientUi] establece lista de precheck',
 
     diningUiLoaded: '[diningRoom] dining loaded', 
     diningAddTable: '[diningRoom] add dining',

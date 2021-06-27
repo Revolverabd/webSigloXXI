@@ -64,24 +64,23 @@ export const Counter = () => {
     }
 
     const handleResetProduct = (Id) => {
-
+        
         let [data] = listProduct.filter(data => data.id === Id);
-
+        
         if (data.counter !== 1) {
-
             data.counter = 1;
             data.subTotal = data.precio;
-
         }
 
         const productsReset = listProduct.map(function (product) {
-
+        
             if (product.id === Id) {
                 product.subTotal = data.subTotal;
                 product.counter = data.counter;
             }
-
+        
             return product;
+        
         });
 
         dispatch(resetProduct(productsReset));

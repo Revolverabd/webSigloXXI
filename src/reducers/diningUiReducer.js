@@ -2,12 +2,6 @@ import { types } from "../types/types";
 
 const initialState = {
     tables: []
-    // active: [{
-    //     btn1: { state: true, css: "boton-state-active" },
-    //     btn2: { state: false, css: "boton-state-deactive" },
-    //     btn3: { state: false, css: "boton-state-deactive" },
-    //     btn4: { state: false, css: "boton-state-deactive" }
-    // }]
 };
 
 

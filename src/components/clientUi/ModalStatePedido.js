@@ -9,7 +9,7 @@ import {
 
 import { 
     calculaTotalPedido
- } from '../../helpers/caculaTotal';
+} from '../../helpers/caculaTotal';
 
 
 import './clientUiStyle.css';
@@ -28,7 +28,7 @@ const customStyles = {
 
 Modal.setAppElement('#root');
 
-export const ModalPedido = () => {
+export const ModalStatePedido = () => {
 
     const dispatch = useDispatch();
 

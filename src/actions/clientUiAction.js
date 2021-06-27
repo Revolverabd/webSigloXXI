@@ -1,8 +1,8 @@
 import { fetchNotToken } from '../helpers/fetch';
 import { types } from '../types/types';
-// import Swal from 'sweetalert2';
+import Swal from 'sweetalert2';
 
-
+//CLIENTE CARGA INICIAL
 export const clientStartLoading = () => {
     return async (dispatch) => {
 
@@ -10,8 +10,6 @@ export const clientStartLoading = () => {
 
             const resp = await fetchNotToken('productos/all');
             const body = await resp.json();
-
-            // console.log(body);
 
             dispatch(clientUiLoaded(body));
 
@@ -31,10 +29,8 @@ export const clientPedidoLoading = () => {
             let body = await resp.json();
 
             if (body.length === 0) {
-                body = [{ id: "123", numMesa: 999, pedidoMesa: "lalal", total: 0, estado: 9, nombreEmpleado: "tulio" }]
+                body = [{ id: "1", numMesa: 0, pedidoMesa: "NO ASIGNADO", total: 0, estado: 10, nombreEmpleado: "ANONIMO", estadoCocina: "NO ASIGNADO" }]
             }
-
-            console.log(body);
 
             dispatch(clientUiPedidoLoaded(body));
 
@@ -49,8 +45,8 @@ export const establecerPedido = (numMesa) => {
     return async (dispatch) => {
 
         try {
-            console.log(numMesa)
-            await fetchNotToken(`pedidos/updMesa/${numMesa}`,{} ,'PUT');
+
+            await fetchNotToken(`pedidos/updMesa/${numMesa}`, {}, 'PUT');
             const resp = await fetchNotToken(`pedidos/pedidoMesa/${numMesa}`);
             const body = await resp.json();
 
@@ -63,6 +59,28 @@ export const establecerPedido = (numMesa) => {
     }
 }
 
+export const clientPedidosLoadingState = (numMesa) => {
+    return async (dispatch) => {
+
+        try {
+
+            await fetchNotToken(`pedidos/updMesa/${numMesa}`, {}, 'PUT');
+            const resp = await fetchNotToken(`pedidos/pedidoMesa/${numMesa}`);
+            const body = await resp.json();
+
+            dispatch(establecePedidoLoaded(body));
+
+        } catch (error) {
+            console.log(error);
+        }
+
+    }
+}
+
+
+
+
+// PRECHECKOUT
 export const addPrecheckout = (product) => {
 
     return async (dispatch) => {
@@ -133,29 +151,50 @@ export const resetProduct = (product) => {
     }
 }
 
+// MODAL
 export const uiOpenModal = () => ({ type: types.uiOpenModal });
 export const uiCloseModal = () => ({ type: types.uiCloseModal });
 
 export const uiOpenModalPedido = () => ({ type: types.uiOpenModalPedido });
 export const uiCloseModalPedido = () => ({ type: types.uiCloseModalPedido });
 
+//PEDIDO
 export const uiSendPedido = (pedido) => {
 
     return async (dispatch) => {
 
         try {
 
-            dispatch(sendPedido(pedido));
+            const resp = await fetchNotToken('pedidos/add', pedido, 'POST');
+            const body = await resp.json();
 
+            if (body.msg === 'OK') {
+
+                localStorage.setItem('token', body.token);
+                localStorage.setItem('token-init-date', new Date().getTime());
+
+                dispatch(uiCloseModalPedido());
+                dispatch(sendPedido());
+
+                Swal.fire('¡YUJU!', 'Pedido enviado con exito', 'success');
+
+
+            } else {
+
+                // dispatch(checkingFinish());
+
+            }
         } catch (error) {
             console.log(error);
         }
+
     }
 }
 
 
 
 
+//DISPATCHERS
 const clientUiLoaded = (products) => ({
     type: types.clientUiLoaded,
     payload: products
@@ -196,10 +235,9 @@ const oneResetProduct = (product) => ({
     payload: product
 })
 
-
-const sendPedido = (pedido) => ({
+const sendPedido = () => ({
     type: types.sendPedido,
-    payload: pedido
+    payload: []
 })
 
 

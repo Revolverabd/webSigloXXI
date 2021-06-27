@@ -13,7 +13,7 @@ export const DashboardRouter = () => {
 
                 <Route exact path="/uidashboard" component={ UiDashboard } />
                 <Route exact path="/dashboard/diningroom" component={ DiningRoomScreen } />
-                <Route exact path="/tablestatus" component={ TableStatusScreen } />
+                <Route exact path="/dashboard/tablestatus" component={ TableStatusScreen } />
                 
 
                 <Redirect to="/uidashboard" />
