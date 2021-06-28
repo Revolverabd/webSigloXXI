@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { diningStartLoading } from '../../actions/diningUiAction';
-// import { NavBar } from '../ui/NavBar';
 import { NavBarDashboar } from '../ui/NavBarDashboar'
 
 import { TablesCard } from './TablesCard';

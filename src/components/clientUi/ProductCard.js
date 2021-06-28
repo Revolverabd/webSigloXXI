@@ -3,7 +3,7 @@ import { addPrecheckout } from '../../actions/clientUiAction';
 import Swal from 'sweetalert2';
 
 
-import './clientUiStyle.css';
+// import './clientUiStyle.css';
 
 export const ProductCard = ({
     Id,

@@ -3,6 +3,7 @@ import { types } from "../types/types";
 const initialState = {
     modalPay: false,
     modalPedido: false,
+    modalViewPedido: false,
     products: [],
     pedido: [{ id: "1", numMesa: 0, pedidoMesa: "NO ASIGNADO", total: 0, estado: 10, nombreEmpleado: "ANONIMO", estadoCocina: "NO ASIGNADO" }],
     listProduct: []
@@ -86,6 +87,19 @@ export const clientUiReducer = (state = initialState, action) => {
             return {
                 ...state,
                 modalPedido: false
+            }
+
+        case types.uiOpenViewPedido:
+            return {
+                ...state,
+                modalViewPedido: true
+            }
+
+
+        case types.uiCloseViewPedido:
+            return {
+                ...state,
+                modalViewPedido: false
             }
 
         case types.sendPedido:

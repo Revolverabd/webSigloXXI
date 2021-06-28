@@ -12,6 +12,5 @@ export const SigloxxiApp = () => {
         <Provider store={store}>
             <AppRouter />
         </Provider>
-
     )
 }

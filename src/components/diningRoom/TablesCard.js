@@ -4,7 +4,7 @@ import {
 } from '../../actions/diningUiAction';
 
 
-import "./diningUiStyle.css"
+// import "./diningUiStyle.css"
 
 export const TablesCard = ({
     Id,

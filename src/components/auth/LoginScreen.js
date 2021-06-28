@@ -8,7 +8,7 @@ import { useForm } from '../../hooks/useForm';
 import { GoogleIn } from './GoogleIn';
 import { GoogleOut } from './GoogleOut';
 
-import './loginStyle.css';
+// import './loginStyle.css';
 
 export const LoginScreen = () => {
 

@@ -64,7 +64,7 @@ export const clientPedidosLoadingState = (numMesa) => {
 
         try {
 
-            await fetchNotToken(`pedidos/updMesa/${numMesa}`, {}, 'PUT');
+            // await fetchNotToken(`pedidos/updMesa/${numMesa}`, {}, 'PUT');
             const resp = await fetchNotToken(`pedidos/pedidoMesa/${numMesa}`);
             const body = await resp.json();
 
@@ -158,6 +158,10 @@ export const uiCloseModal = () => ({ type: types.uiCloseModal });
 export const uiOpenModalPedido = () => ({ type: types.uiOpenModalPedido });
 export const uiCloseModalPedido = () => ({ type: types.uiCloseModalPedido });
 
+export const uiOpenViewPedido = () => ({ type: types.uiOpenViewPedido });
+export const uiCloseViewPedido = () => ({ type: types.uiCloseViewPedido });
+
+
 //PEDIDO
 export const uiSendPedido = (pedido) => {
 
@@ -170,8 +174,8 @@ export const uiSendPedido = (pedido) => {
 
             if (body.msg === 'OK') {
 
-                localStorage.setItem('token', body.token);
-                localStorage.setItem('token-init-date', new Date().getTime());
+                // localStorage.setItem('token', body.token);
+                // localStorage.setItem('token-init-date', new Date().getTime());
 
                 dispatch(uiCloseModalPedido());
                 dispatch(sendPedido());

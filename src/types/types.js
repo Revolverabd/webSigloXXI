@@ -22,13 +22,19 @@ export const types = {
     uiCloseModal: '[clientUi] closeModal',
     uiOpenModalPedido: '[clientUi] openModal Pedido',
     uiCloseModalPedido: '[clientUi] closeModal Pedido',
+    uiOpenViewPedido: '[clientUi] openModal pay Pedido',
+    uiCloseViewPedido: '[clientUi] closeModal pay Pedido',
     clientUiPedidoLoaded: '[clientUi] load Pedido',
     establecePedidoLoaded: '[clientUi] estabklece pedido',
     sendPedido: '[clientUi] establece lista de precheck',
 
     diningUiLoaded: '[diningRoom] dining loaded', 
     diningAddTable: '[diningRoom] add dining',
-    changeState: '[diningRoom] change state table'
+    changeState: '[diningRoom] change state table',
+
+    TableStatusUiLoaded: '[tableStatus] TableStatus loaded', 
+    TableStatusAddStatus: '[tableStatus] add TableStatus',
+    changeStateOrders: '[tableStatus] change state Orders'
 
 }
 

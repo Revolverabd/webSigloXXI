@@ -6,24 +6,26 @@ import { ProductCard } from './ProductCard';
 import { Counter } from './Counter';
 import { ModalPay } from './ModalPay';
 import { ModalPedido } from './ModalPedido';
+import { ModalStatePedido } from './ModalStatePedido';
 
 import {
     clientPedidoLoading,
     clientStartLoading,
     uiOpenModal,
     uiOpenModalPedido,
+    uiOpenViewPedido,
     establecerPedido,
     clientPedidosLoadingState
 } from '../../actions/clientUiAction';
 
-import "./clientUiStyle.css"
+// import "./clientUiStyle.css"
 
 export const ClientUiScreen = () => {
 
     const dispatch = useDispatch();
     const dispatch2 = useDispatch();
     const dispatch3 = useDispatch();
-    const dispatch4 = useDispatch();
+    // const dispatch4 = useDispatch();
 
     const { products, listProduct, pedido } = useSelector(state => state.clientUi);
 
@@ -34,6 +36,12 @@ export const ClientUiScreen = () => {
 
     let btnState = false;
     if (listProduct.length === 0) {
+        btnState = true;
+    }
+
+    //cambiar posteriormente
+    let btnPayState = false;
+    if (pedido.length === 0) {
         btnState = true;
     }
 
@@ -51,15 +59,23 @@ export const ClientUiScreen = () => {
         dispatch(uiOpenModalPedido());
     }
 
+    const handleOpenViewModal = (numMesa) => {
+
+        dispatch(clientPedidosLoadingState(numMesa));
+        dispatch(uiOpenViewPedido());
+    }
+
     useEffect(() => {
 
         // mantiene el estado del pedido mientras no se encuentra una mesa asignada a este terminal
         if (pedido[0].estado === 10) {
+
             dispatch2(clientPedidoLoading());
+
         } else {
-            dispatch4(clientPedidosLoadingState());
+            // dispatch4(clientPedidosLoadingState(pedido[0].numMesa));
         }
-        // dispatch3(establecerPedido(pedido[0].numMesa));
+
         dispatch(clientStartLoading());
 
     }, [dispatch2, dispatch]);
@@ -71,7 +87,29 @@ export const ClientUiScreen = () => {
             <NavBar />
 
             <div className="row"  >
+
                 <div className="col-8 col-sm-8 col-md-8 paddingtop " >
+
+                    <button
+                        disabled={btnPayState}
+                        className="btn btn-danger"
+                        type="submit"
+                        onClick={handleOpenModal}
+                    >
+                        Pagar
+                    </button>
+                    <ModalPay />
+
+                    <button
+                        disabled={btnPayState}
+                        className="btn btn-danger"
+                        type="submit"
+                        onClick={() => handleOpenViewModal(pedido[0].numMesa)}
+                    >
+                        Mis Pedidos
+                    </button>
+                    <ModalStatePedido />
+
 
                     <h1> MESA {pedido[0].numMesa}</h1>
                     <h1> ATENDIDO POR {pedido[0].nombreEmpleado}</h1>
@@ -147,14 +185,7 @@ export const ClientUiScreen = () => {
 
                         <Counter />
 
-                        <button
-                            disabled={btnState}
-                            className="btn btn-danger"
-                            type="submit"
-                            onClick={handleOpenModal}
-                        >
-                            Pagar
-                        </button>
+
                         <button
                             disabled={btnState}
                             className="btn btn-info"
@@ -165,7 +196,6 @@ export const ClientUiScreen = () => {
                             Realizar pedido
                         </button>
 
-                        <ModalPay />
 
                         <ModalPedido />
 

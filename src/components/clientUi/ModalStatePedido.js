@@ -3,11 +3,11 @@ import Modal from 'react-modal';
 import { useDispatch, useSelector } from 'react-redux';
 
 import {
-    uiCloseModalPedido,
+    uiCloseViewPedido,
     uiSendPedido
 } from '../../actions/clientUiAction';
 
-import { 
+import {
     calculaTotalPedido
 } from '../../helpers/caculaTotal';
 
@@ -30,40 +30,42 @@ Modal.setAppElement('#root');
 
 export const ModalStatePedido = () => {
 
+    const { modalViewPedido, pedido } = useSelector(state => state.clientUi)
+
     const dispatch = useDispatch();
 
-    const { modalPedido, listProduct, pedido } = useSelector(state => state.clientUi)
 
     const closeModal = () => {
-        dispatch(uiCloseModalPedido());
+        dispatch(uiCloseViewPedido());
     }
 
-    const total = calculaTotalPedido(listProduct);
+    console.log(pedido)
+    // const total = calculaTotalPedido(listProduct);
 
-    let newPedido = {
-        numMesa: pedido[0].numMesa,
-        pedidoMesa: pedido[0].pedidoMesa,
-        total,
-        estado: 1,
-        estadoCocina: "CONFIRMADA"
-    }
+    // let newPedido = {
+    //     numMesa: pedido[0].numMesa,
+    //     pedidoMesa: pedido[0].pedidoMesa,
+    //     total,
+    //     estado: 1,
+    //     estadoCocina: "CONFIRMADA"
+    // }
 
-    const handleSendPedido = () => {
-        let pedido = listProduct.map(function (product) {
-            let lista = {
-                name: product.name,
-                counter: product.counter
-            }
-            return lista;
-        });
-        pedido = JSON.stringify(pedido);
-        newPedido.pedidoMesa = pedido;
-        dispatch(uiSendPedido(newPedido));
-    }
+    // const handleSendPedido = () => {
+    //     let pedido = listProduct.map(function (product) {
+    //         let lista = {
+    //             name: product.name,
+    //             counter: product.counter
+    //         }
+    //         return lista;
+    //     });
+    //     pedido = JSON.stringify(pedido);
+    //     newPedido.pedidoMesa = pedido;
+    //     dispatch(uiSendPedido(newPedido));
+    // }
 
     return (
         <Modal
-            isOpen={modalPedido}
+            isOpen={modalViewPedido}
             // onAfterOpen={afterOpenModal}
             onRequestClose={closeModal}
             closeTimeoutMS={200}
@@ -72,21 +74,21 @@ export const ModalStatePedido = () => {
             overlayClassName="modal-fondo"
             contentLabel="Example Modal"
         >
-            <h1>Pedido</h1>
+            <h1>Mis Pedidos</h1>
             <br />
             <div>
                 <ul className=" ">
                     {
-                        listProduct.map((oneProduct) => (
+                        pedido.map((oneProduct) => (
 
                             <li
                                 key={oneProduct.id}
                                 className=""
                             >
-                                <p className="text-center m-cero"> {oneProduct.name}</p>
+                                {/* <p className="text-center m-cero"> {oneProduct.name}</p>
                                 <p className="text-center m-cero"> ${oneProduct.precio}</p>
                                 <p className="text-center m-cero">Sub Total {oneProduct.subTotal}</p>
-                                <p className="text-center m-cero">Cantidad {oneProduct.counter}</p>
+                                <p className="text-center m-cero">Cantidad {oneProduct.counter}</p> */}
 
                             </li>
                         ))
@@ -94,8 +96,7 @@ export const ModalStatePedido = () => {
                 </ul>
             </div>
 
-
-            <div className="container">
+            {/* <div className="container">
 
                 <hr />
 
@@ -108,7 +109,7 @@ export const ModalStatePedido = () => {
                     <span> Solicitar comida</span>
                 </button>
 
-            </div>
+            </div> */}
         </Modal>
     )
 }
