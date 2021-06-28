@@ -2,8 +2,6 @@ import { useDispatch } from 'react-redux';
 import React from "react";
 import { changeStateTableOrders } from '../../actions/TableStatusUiAction';
 
-// import "./TableStatusUiStyle.css"
-
 export const TablesStatusCard = ({
     id,
     numMesa,

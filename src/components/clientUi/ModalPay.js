@@ -4,11 +4,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { uiCloseModal } from '../../actions/clientUiAction';
 
 import { fetchNotTokenWebpay } from '../../helpers/fetch';
-import './clientUiStyle.css';
-// const WebpayPlus = require('transbank-sdk').WebpayPlus; // ES5
-// import { WebpayPlus } from 'transbank-sdk'; // ES6
-
-// Es necesario ejecutar dentro de una función async para utilizar await
 
 
 const customStyles = {

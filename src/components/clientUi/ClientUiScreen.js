@@ -18,7 +18,12 @@ import {
     clientPedidosLoadingState
 } from '../../actions/clientUiAction';
 
-// import "./clientUiStyle.css"
+
+/**
+ * ESTILOS 
+ **/
+ import "../../styles/main.css";
+
 
 export const ClientUiScreen = () => {
 

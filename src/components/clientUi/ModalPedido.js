@@ -11,9 +11,8 @@ import {
     calculaTotalPedido
  } from '../../helpers/caculaTotal';
 
-
-import './clientUiStyle.css';
 // import Swal from 'sweetalert2';
+
 
 const customStyles = {
     content: {
