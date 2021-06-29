@@ -25,7 +25,6 @@ export const TableStatusScreen = () => {
 
     }, [dispatch])
 
-
     return (
 
         <div className="cuerpo2">

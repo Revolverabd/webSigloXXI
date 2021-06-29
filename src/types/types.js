@@ -27,6 +27,7 @@ export const types = {
     clientUiPedidoLoaded: '[clientUi] load Pedido',
     establecePedidoLoaded: '[clientUi] estabklece pedido',
     sendPedido: '[clientUi] establece lista de precheck',
+    createPagoLoad: '[clientUi] pago',
 
     diningUiLoaded: '[diningRoom] dining loaded', 
     diningAddTable: '[diningRoom] add dining',

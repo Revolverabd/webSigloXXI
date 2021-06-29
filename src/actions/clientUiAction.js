@@ -206,11 +206,21 @@ export const actionWebpay = async (transact) => {
 }
 
 export const createPago = async (transact) => {
+    
+    return async (dispatch) => {
+        
+        try {
+            
+            const resp = await fetchNotTokenWebpay(`webpay/create`, transact, 'POST');
+            const body = await resp.json();
 
-    const resp = await fetchNotTokenWebpay(`webpay/create`, transact, 'POST');
-    const body = await resp.json();
+            dispatch(createPagoLoad(body));
 
-    return body;
+        } catch (error) {
+            console.log(error);
+        }
+
+    }
 
 }
 
@@ -262,6 +272,11 @@ const oneResetProduct = (product) => ({
 const sendPedido = () => ({
     type: types.sendPedido,
     payload: []
+})
+
+const createPagoLoad = (pago) => ({
+    type: types.createPagoLoad,
+    payload: pago
 })
 
 

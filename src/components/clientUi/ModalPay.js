@@ -33,63 +33,26 @@ export const ModalPay = () => {
         "buy_order": "ordenCompra12345678",
         "session_id": "sesion1234557545",
         "amount": totalBoleta,
-        "return_url": "http://www.comercio.cl/webpay/retorno"
+        "return_url": "http://apirestaurant.duckdns.org:8081/api/webpay/info"
     }
-
-    // dispatch(createPago(transact));
-
-
-
-
-
-    // console.log(transact);
 
     let token = '';
     let url = '';
 
-
-    // (transact) => {
-
-    //     const resultWebPay = await actionWebpay(transact);
-
-    //     token = resultWebPay.token;
-    //     url = resultWebPay.url;
-
-    // }
-
-    // const handlePayWebPay = async (transact) => {
-    //     // e.preventDefault();
-
-    //     const resultWebPay = await actionWebpay(transact);
-
-    //     token = resultWebPay.token;
-    //     url = resultWebPay.url;
-
-    //     console.log(token);
-
-    //     document.formWebPay.submit();
-
-    // }
-
     const handlePayWebPay = async (transact) => {
-        // e.preventDefault();
 
         const resultWebPay = await actionWebpay(transact);
 
         token = resultWebPay.token;
         url = resultWebPay.url;
 
-        document.body.innerHTML +=
-            `<form className="container" id="formId" name="formWebPay" action="https://webpay3gint.transbank.cl/webpayserver/initTransaction" method="POST">
-                <input type="hidden" name="token_ws" value={token} />
-            </form>`;
+        const divParent = document.getElementById('funcWebPay');
 
-        $("#funcWebPay").appendTo("#formId");
-
+        divParent.innerHTML = `"<form className="container" id="formId" name="formWebPay" action=${url} method="POST">
+                                    <input type="hidden" name="token_ws" value=${token} />
+                                </form>"`;
         document.formWebPay.submit();
-
     }
-
 
     const handlePayCash = (e) => {
         e.preventDefault();
@@ -117,6 +80,18 @@ export const ModalPay = () => {
             <div id="funcWebPay">
 
             </div>
+
+            <div className="container">
+                <button
+                    type="submit"
+                    className="btn btn-outline-primary btn-block"
+                    onClick={() => handlePayWebPay(transact)}
+                >
+                    <i className="far fa-credit-card"></i>
+                    <span> Pagar WebPay</span>
+                </button>
+            </div>
+
             {/* <form className="container" name="formWebPay" action="https://webpay3gint.transbank.cl/webpayserver/initTransaction" method="POST">
 
                 <input type="hidden" name="token_ws" value={token} />
@@ -133,15 +108,6 @@ export const ModalPay = () => {
                 <hr />
 
             </form> */}
-
-            <button
-                type="submit"
-                className="btn btn-outline-primary btn-block"
-                onClick={() => handlePayWebPay(transact)}
-            >
-                <i className="far fa-credit-card"></i>
-                <span> Pagar WebPay</span>
-            </button>
 
             <div className="container">
                 <button

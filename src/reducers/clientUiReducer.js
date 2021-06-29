@@ -4,6 +4,7 @@ const initialState = {
     modalPay: false,
     modalPedido: false,
     modalViewPedido: false,
+    pagoLoad:[],
     products: [],
     pedido: [{ id: "1", numMesa: 0, pedidoMesa: "NO ASIGNADO", total: 0, estado: 10, nombreEmpleado: "ANONIMO", estadoCocina: "NO ASIGNADO" }],
     listProduct: []
@@ -108,6 +109,11 @@ export const clientUiReducer = (state = initialState, action) => {
                 listProduct: action.payload
             }
 
+        case types.createPagoLoad:
+            return {
+                ...state,
+                pagoLoad: action.payload
+            }
 
         default:
             return state;
