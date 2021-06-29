@@ -10,8 +10,13 @@ const calculaTotalPedido = (listProduct) => {
     return total;
 }
 
-const calculaTotalBoleta = () => {
+const calculaTotalBoleta = (pedido) => {
+    let total = 0;
+    pedido.forEach(element => {
+        total += element.total;
+    });
 
+    return total;
 }
 
 

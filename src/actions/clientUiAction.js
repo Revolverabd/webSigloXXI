@@ -1,4 +1,4 @@
-import { fetchNotToken } from '../helpers/fetch';
+import { fetchNotToken, fetchNotTokenWebpay } from '../helpers/fetch';
 import { types } from '../types/types';
 import Swal from 'sweetalert2';
 
@@ -194,6 +194,26 @@ export const uiSendPedido = (pedido) => {
 
     }
 }
+
+//PAGO WEBPAY
+export const actionWebpay = async (transact) => {
+
+    const resp = await fetchNotTokenWebpay(`webpay/create`, transact, 'POST');
+    const body = await resp.json();
+
+    return body;
+
+}
+
+export const createPago = async (transact) => {
+
+    const resp = await fetchNotTokenWebpay(`webpay/create`, transact, 'POST');
+    const body = await resp.json();
+
+    return body;
+
+}
+
 
 
 

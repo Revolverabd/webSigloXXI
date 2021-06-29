@@ -1,10 +1,13 @@
 import React from 'react';
 import Modal from 'react-modal';
+import Swal from 'sweetalert2';
+
+
 import { useDispatch, useSelector } from 'react-redux';
-import { uiCloseModal } from '../../actions/clientUiAction';
+import { uiCloseModal, actionWebpay, createPago } from '../../actions/clientUiAction';
 
-import { fetchNotTokenWebpay } from '../../helpers/fetch';
 
+import { calculaTotalBoleta } from '../../helpers/caculaTotal';
 
 const customStyles = {
     content: {
@@ -22,27 +25,79 @@ Modal.setAppElement('#root');
 export const ModalPay = () => {
 
     const dispatch = useDispatch();
-    const { modalPay } = useSelector(state => state.clientUi)
+    const { modalPay, pedido } = useSelector(state => state.clientUi);
 
+    const totalBoleta = calculaTotalBoleta(pedido);
+
+    const transact = {
+        "buy_order": "ordenCompra12345678",
+        "session_id": "sesion1234557545",
+        "amount": totalBoleta,
+        "return_url": "http://www.comercio.cl/webpay/retorno"
+    }
+
+    // dispatch(createPago(transact));
+
+
+
+
+
+    // console.log(transact);
+
+    let token = '';
+    let url = '';
+
+
+    // (transact) => {
+
+    //     const resultWebPay = await actionWebpay(transact);
+
+    //     token = resultWebPay.token;
+    //     url = resultWebPay.url;
+
+    // }
+
+    // const handlePayWebPay = async (transact) => {
+    //     // e.preventDefault();
+
+    //     const resultWebPay = await actionWebpay(transact);
+
+    //     token = resultWebPay.token;
+    //     url = resultWebPay.url;
+
+    //     console.log(token);
+
+    //     document.formWebPay.submit();
+
+    // }
+
+    const handlePayWebPay = async (transact) => {
+        // e.preventDefault();
+
+        const resultWebPay = await actionWebpay(transact);
+
+        token = resultWebPay.token;
+        url = resultWebPay.url;
+
+        document.body.innerHTML +=
+            `<form className="container" id="formId" name="formWebPay" action="https://webpay3gint.transbank.cl/webpayserver/initTransaction" method="POST">
+                <input type="hidden" name="token_ws" value={token} />
+            </form>`;
+
+        $("#funcWebPay").appendTo("#formId");
+
+        document.formWebPay.submit();
+
+    }
+
+
+    const handlePayCash = (e) => {
+        e.preventDefault();
+        Swal.fire('Aviso', 'Aviso entregado, espere a que el garzón venga', 'info');
+    }
 
     const closeModal = () => {
         dispatch(uiCloseModal());
-    }
-
-    const handlePayCash = async (e) => {
-        e.preventDefault();
-
-        const transact = {
-            "buy_order": "ordenCompra12345678",
-            "session_id": "sesion1234557545",
-            "amount": 10000,
-            "return_url": "http://www.comercio.cl/webpay/retorno"
-        }
-
-        const resp = await fetchNotTokenWebpay(`webpay/create`, transact, 'POST');
-        const body = await resp.json();
-        console.log(body)
-
     }
 
     return (
@@ -59,13 +114,17 @@ export const ModalPay = () => {
             <h1>Pre Cuenta</h1>
             <br />
 
-            <form className="container" action="https://webpay3gint.transbank.cl/webpayserver/initTransaction" method="POST">
+            <div id="funcWebPay">
 
-                <input type="hidden" name="token_ws" value="01abccccd6e4887f1b70e0a4d7e577a25c8237f2ccae900e5c40d3592079c466" />
-               
+            </div>
+            {/* <form className="container" name="formWebPay" action="https://webpay3gint.transbank.cl/webpayserver/initTransaction" method="POST">
+
+                <input type="hidden" name="token_ws" value={token} />
+
                 <button
                     type="submit"
                     className="btn btn-outline-primary btn-block"
+                    onClick={() => handlePayWebPay(transact)}
                 >
                     <i className="far fa-credit-card"></i>
                     <span> Pagar WebPay</span>
@@ -73,7 +132,16 @@ export const ModalPay = () => {
 
                 <hr />
 
-            </form>
+            </form> */}
+
+            <button
+                type="submit"
+                className="btn btn-outline-primary btn-block"
+                onClick={() => handlePayWebPay(transact)}
+            >
+                <i className="far fa-credit-card"></i>
+                <span> Pagar WebPay</span>
+            </button>
 
             <div className="container">
                 <button

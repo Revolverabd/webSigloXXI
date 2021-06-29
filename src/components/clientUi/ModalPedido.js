@@ -29,13 +29,8 @@ Modal.setAppElement('#root');
 
 export const ModalPedido = () => {
 
-    const dispatch = useDispatch();
-
     const { modalPedido, listProduct, pedido } = useSelector(state => state.clientUi)
-
-    const closeModal = () => {
-        dispatch(uiCloseModalPedido());
-    }
+    const dispatch = useDispatch();
 
     const total = calculaTotalPedido(listProduct);
 
@@ -59,6 +54,11 @@ export const ModalPedido = () => {
         newPedido.pedidoMesa = pedido;
         dispatch(uiSendPedido(newPedido));
     }
+
+    const closeModal = () => {
+        dispatch(uiCloseModalPedido());
+    }
+
 
     return (
         <Modal

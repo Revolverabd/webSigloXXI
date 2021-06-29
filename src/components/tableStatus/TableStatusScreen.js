@@ -17,10 +17,6 @@ export const TableStatusScreen = () => {
 
     let data1 = orders.filter(data => data.estadoCocina === "CONFIRMADA");
 
-    // let data2 = orders.filter(data1 => data1.pedido = JSON.stringify(data1.pedidoMesa));
-    // console.log(data1);
-
-    // console.log(data1[0].pedido);
     console.log(data1);
 
     useEffect(() => {

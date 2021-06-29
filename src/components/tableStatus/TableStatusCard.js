@@ -17,8 +17,8 @@ export const TablesStatusCard = ({
 
     const handleClick = (id) => {
 
-
         dispatch(changeStateTableOrders(id));
+
     }
 
     return (

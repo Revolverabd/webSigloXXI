@@ -22,21 +22,18 @@ import {
 /**
  * ESTILOS 
  **/
- import "../../styles/main.css";
+import "../../styles/main.css";
 
 
 export const ClientUiScreen = () => {
 
     const dispatch = useDispatch();
-    const dispatch2 = useDispatch();
-    const dispatch3 = useDispatch();
-    // const dispatch4 = useDispatch();
 
     const { products, listProduct, pedido } = useSelector(state => state.clientUi);
 
     //establece la mesa asignada al terminal
     if (pedido[0].estado === 0) {
-        dispatch3(establecerPedido(pedido[0].numMesa));
+        dispatch(establecerPedido(pedido[0].numMesa));
     }
 
     let btnState = false;
@@ -56,7 +53,11 @@ export const ClientUiScreen = () => {
     let data4 = products.filter(data => data.Categoria === "PASTAS");
     let data5 = products.filter(data => data.Categoria === "POSTRES");
 
-    const handleOpenModal = () => {
+    const handleOpenModal = (numMesa) => {
+
+        if (numMesa !== 0) {
+            dispatch(clientPedidosLoadingState(numMesa));
+        }
         dispatch(uiOpenModal());
     }
 
@@ -65,8 +66,9 @@ export const ClientUiScreen = () => {
     }
 
     const handleOpenViewModal = (numMesa) => {
-
-        dispatch(clientPedidosLoadingState(numMesa));
+        if (numMesa !== 0) {
+            dispatch(clientPedidosLoadingState(numMesa));
+        }
         dispatch(uiOpenViewPedido());
     }
 
@@ -74,16 +76,12 @@ export const ClientUiScreen = () => {
 
         // mantiene el estado del pedido mientras no se encuentra una mesa asignada a este terminal
         if (pedido[0].estado === 10) {
-
-            dispatch2(clientPedidoLoading());
-
-        } else {
-            // dispatch4(clientPedidosLoadingState(pedido[0].numMesa));
+            dispatch(clientPedidoLoading());
         }
 
         dispatch(clientStartLoading());
 
-    }, [dispatch2, dispatch]);
+    }, [dispatch]);
 
     return (
 
@@ -99,7 +97,7 @@ export const ClientUiScreen = () => {
                         disabled={btnPayState}
                         className="btn btn-danger"
                         type="submit"
-                        onClick={handleOpenModal}
+                        onClick={() => handleOpenModal(pedido[0].numMesa)}
                     >
                         Pagar
                     </button>
