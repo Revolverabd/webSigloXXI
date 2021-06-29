@@ -79,7 +79,6 @@ export const clientPedidosLoadingState = (numMesa) => {
 
 
 
-
 // PRECHECKOUT
 export const addPrecheckout = (product) => {
 

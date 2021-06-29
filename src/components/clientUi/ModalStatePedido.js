@@ -30,23 +30,23 @@ export const ModalStatePedido = () => {
 
     let platos = [];
 
-    // const productsDecreased = pedido.map(function (product) {
-
-    //     if (product.pedidoMesa !== 'NO ASIGNADO') {
-    //         platos = JSON.parse(product.pedidoMesa);
-    //     }
-
-    //     return platos;
-
-    // });
-
     pedido.forEach(product => {
+
         if (product.pedidoMesa !== 'NO ASIGNADO') {
-            platos = JSON.parse(product.pedidoMesa);
+
+            let pedidos = {}
+
+            pedidos['pedidoMesa'] = JSON.parse(product.pedidoMesa);
+            pedidos['total'] = product.total;
+            pedidos['estadoCocina'] = product.estadoCocina;
+
+            platos.push(pedidos);
+
         }
+
     });
 
-    // console.log(platos);
+    console.log(platos);
 
     const closeModal = () => {
         dispatch(uiCloseViewPedido());
@@ -69,13 +69,28 @@ export const ModalStatePedido = () => {
             <div>
                 <ul className=" ">
                     {
-                        platos.map((oneProduct) => (
+                        platos.map((oneProduct, i) => (
 
                             <li
                                 key={oneProduct.id}
                                 className=""
                             >
-                                <p className="text-center m-cero"> {oneProduct.name}</p>
+                                <p className="text-center m-cero"> pedido {i + 1} total {oneProduct.total} {oneProduct.estadoCocina}</p>
+                                <ul className=" ">
+                                    {
+                                        oneProduct.pedidoMesa.map((element, i) => (
+
+                                            <li
+                                                key={element.id}
+                                                className=""
+                                            >
+                                                <p className="text-center m-cero"> {element.name}</p>
+
+
+                                            </li>
+                                        ))
+                                    }
+                                </ul>
 
                             </li>
                         ))
