@@ -173,14 +173,10 @@ export const uiSendPedido = (pedido) => {
 
             if (body.msg === 'OK') {
 
-                // localStorage.setItem('token', body.token);
-                // localStorage.setItem('token-init-date', new Date().getTime());
-
                 dispatch(uiCloseModalPedido());
                 dispatch(sendPedido());
 
                 Swal.fire('¡YUJU!', 'Pedido enviado con exito', 'success');
-
 
             } else {
 
@@ -197,31 +193,33 @@ export const uiSendPedido = (pedido) => {
 //PAGO WEBPAY
 export const actionWebpay = async (transact) => {
 
-    const resp = await fetchNotTokenWebpay(`webpay/create`, transact, 'POST');
-    const body = await resp.json();
+    try {
 
-    return body;
+        const resp = await fetchNotTokenWebpay(`webpay/create`, transact, 'POST');
+        const body = await resp.json();
 
-}
+        // console.log(`soy un body ${body}`)
 
-export const createPago = async (transact) => {
-    
-    return async (dispatch) => {
-        
-        try {
-            
-            const resp = await fetchNotTokenWebpay(`webpay/create`, transact, 'POST');
-            const body = await resp.json();
+        return body;
 
-            dispatch(createPagoLoad(body));
+    } catch (error) {
 
-        } catch (error) {
-            console.log(error);
-        }
+        console.log(error);
+        return false;
 
     }
 
 }
+
+export const tansactPagoDb = async (transactDb) => {
+
+    try {
+        await fetchNotToken(`pago/create`, transactDb, 'POST');
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 
 
 
@@ -273,10 +271,7 @@ const sendPedido = () => ({
     payload: []
 })
 
-const createPagoLoad = (pago) => ({
-    type: types.createPagoLoad,
-    payload: pago
-})
+
 
 
 

@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
     uiCloseViewPedido
 } from '../../actions/clientUiAction';
+import { calculaTotalBoleta } from '../../helpers/caculaTotal';
 
 // import Swal from 'sweetalert2';
 
@@ -26,10 +27,10 @@ export const ModalStatePedido = () => {
     const { modalViewPedido, pedido } = useSelector(state => state.clientUi)
     const dispatch = useDispatch();
 
-    // console.log(pedido);
-
     let platos = [];
 
+    const totalBoleta = calculaTotalBoleta(pedido);
+    
     pedido.forEach(product => {
 
         if (product.pedidoMesa !== 'NO ASIGNADO') {
@@ -45,8 +46,6 @@ export const ModalStatePedido = () => {
         }
 
     });
-
-    console.log(platos);
 
     const closeModal = () => {
         dispatch(uiCloseViewPedido());
@@ -67,35 +66,37 @@ export const ModalStatePedido = () => {
             <h1>Mis Pedidos</h1>
             <br />
             <div>
-                <ul className=" ">
+            <div className="scroll-modal precuentaPedido">
                     {
                         platos.map((oneProduct, i) => (
 
-                            <li
+                            <div
                                 key={oneProduct.id}
-                                className=""
+                                className="pedidoOrden "
                             >
-                                <p className="text-center m-cero"> pedido {i + 1} total {oneProduct.total} {oneProduct.estadoCocina}</p>
-                                <ul className=" ">
+                                <div className="tituloLeft"><p id="tituloPedido" className="pedidoOrden m-cero "> Pedido NÂº: {i + 1}</p></div>
+                                
+                                <div className="row pascalCase ">
                                     {
-                                        oneProduct.pedidoMesa.map((element, i) => (
+                                        oneProduct.pedidoMesa.map((element, ii) => (
 
-                                            <li
+                                            <p
                                                 key={element.id}
-                                                className=""
+                                                className="nombreContadorModelPay"
                                             >
-                                                <p className="text-center m-cero"> {element.name}</p>
-
-
-                                            </li>
+                                                {element.name.toLowerCase()}&#58;&nbsp;{element.counter}&nbsp;
+                                            </p>
                                         ))
                                     }
-                                </ul>
-
-                            </li>
+                                </div>
+                                <div class="pedidoOrden tituloRight">Total de Pedido: ${oneProduct.total}</div>
+                            </div>
                         ))
                     }
-                </ul>
+                    <p class="pedidoOrden tituloRight2">
+                        Monto total a Pagar: ${totalBoleta}
+                    </p>
+                </div>
             </div>
 
         </Modal>

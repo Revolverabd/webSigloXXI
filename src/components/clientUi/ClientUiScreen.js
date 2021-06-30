@@ -92,50 +92,93 @@ export const ClientUiScreen = () => {
             <div className="row"  >
 
                 <div className="col-8 col-sm-8 col-md-8 paddingtop " >
-
-                    <button
-                        disabled={btnPayState}
-                        className="btn btn-danger"
-                        type="submit"
-                        onClick={() => handleOpenModal(pedido[0].numMesa)}
-                    >
-                        Pagar
-                    </button>
-                    <ModalPay />
-
-                    <button
-                        disabled={btnPayState}
-                        className="btn btn-danger"
-                        type="submit"
-                        onClick={() => handleOpenViewModal(pedido[0].numMesa)}
-                    >
-                        Mis Pedidos
-                    </button>
-                    <ModalStatePedido />
-
-
-                    <h1> MESA {pedido[0].numMesa}</h1>
-                    <h1> ATENDIDO POR {pedido[0].nombreEmpleado}</h1>
-
-                    <h1 id="titulo">PLATOS DE LA CASA</h1>
-
-                    <div className="row ">
-
-                        {
-                            data1.map(product => (
-                                <ProductCard
-                                    key={product.Id}
-                                    {...product}
-                                />
-                            ))
-                        }
+                    <div className="barraTopClientUiScreen">
+                        <div className="floatLeft">
+                            <h1> Mesa Nº: {pedido[0].numMesa}</h1>
+                            <h1> Atendido por Garzón: {pedido[0].nombreEmpleado}</h1>
+                        </div>
+                        <div className="floatRight">
+                            <div>
+                                <button
+                                    disabled={btnPayState}
+                                    className="btn-top-client-pagar btn btn-danger"
+                                    type="submit"
+                                    onClick={() => handleOpenModal(pedido[0].numMesa)}
+                                >
+                                    <i className="fas fa-money-bill-alt">&nbsp;</i>
+                                    Pagar
+                                </button>
+                            </div>
+                            <ModalPay />
+                            <div>
+                                <button
+                                    disabled={btnPayState}
+                                    className="btn-top-client-pedidos btn btn-danger"
+                                    type="submit"
+                                    onClick={() => handleOpenViewModal(pedido[0].numMesa)}
+                                >
+                                    <i className="fas fa-shopping-basket">&nbsp;</i>
+                                    Mis Pedidos
+                                </button>
+                            </div>
+                        </div>
+                        <ModalStatePedido />
                     </div>
+                    <div className="margenTopClientUi">
+                        <h1 id="titulo">PLATOS DE LA CASA</h1>
 
-                    <div>
-                        <h1 id="titulo">Bebestibles</h1>
+                        <div className="row ">
+
+                            {
+                                data1.map(product => (
+                                    <ProductCard
+                                        key={product.Id}
+                                        {...product}
+                                    />
+                                ))
+                            }
+                        </div>
+
+                        <div>
+                            <h1 id="titulo">Bebestibles</h1>
+                            <div className="card-columns">
+                                {
+                                    data2.map(product => (
+                                        <ProductCard
+                                            key={product.Id}
+                                            {...product}
+                                        />
+                                    ))
+                                }
+                            </div>
+                        </div>
+
+                        <h1 id="titulo">Carnes</h1>
                         <div className="card-columns">
                             {
-                                data2.map(product => (
+                                data3.map(product => (
+                                    <ProductCard
+                                        key={product.Id}
+                                        {...product}
+                                    />
+                                ))
+                            }
+                        </div>
+                        <h1 id="titulo">Pastas</h1>
+                        <div className="card-columns">
+                            {
+                                data4.map(product => (
+                                    <ProductCard
+                                        key={product.Id}
+                                        {...product}
+                                    />
+                                ))
+                            }
+                        </div>
+                        <h1 id="titulo">Postres</h1>
+                        <div className="card-columns">
+                            {
+                                data5.map(product => (
                                     <ProductCard
                                         key={product.Id}
                                         {...product}
@@ -144,41 +187,6 @@ export const ClientUiScreen = () => {
                             }
                         </div>
                     </div>
-
-                    <h1 id="titulo">Carnes</h1>
-                    <div className="card-columns">
-                        {
-                            data3.map(product => (
-                                <ProductCard
-                                    key={product.Id}
-                                    {...product}
-                                />
-                            ))
-                        }
-                    </div>
-                    <h1 id="titulo">Pastas</h1>
-                    <div className="card-columns">
-                        {
-                            data4.map(product => (
-                                <ProductCard
-                                    key={product.Id}
-                                    {...product}
-                                />
-                            ))
-                        }
-                    </div>
-                    <h1 id="titulo">Postres</h1>
-                    <div className="card-columns">
-                        {
-                            data5.map(product => (
-                                <ProductCard
-                                    key={product.Id}
-                                    {...product}
-                                />
-                            ))
-                        }
-                    </div>
-
                 </div>
 
                 <div className="col-4 col-sm-4 col-md-4 prueba paddingtop" >

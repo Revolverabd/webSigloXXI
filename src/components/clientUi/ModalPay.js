@@ -1,11 +1,18 @@
 import React from 'react';
 import Modal from 'react-modal';
+import { uuid } from 'uuidv4';
 import Swal from 'sweetalert2';
 
+import {
+    useDispatch,
+    useSelector
+} from 'react-redux';
 
-import { useDispatch, useSelector } from 'react-redux';
-import { uiCloseModal, actionWebpay, createPago } from '../../actions/clientUiAction';
-
+import {
+    uiCloseModal,
+    actionWebpay,
+    tansactPagoDb
+} from '../../actions/clientUiAction';
 
 import { calculaTotalBoleta } from '../../helpers/caculaTotal';
 
@@ -26,6 +33,7 @@ export const ModalPay = () => {
 
     const dispatch = useDispatch();
     const { modalPay, pedido } = useSelector(state => state.clientUi);
+
 
     let platos = [];
     let mesa = "";
@@ -50,10 +58,9 @@ export const ModalPay = () => {
 
     const totalBoleta = calculaTotalBoleta(pedido);
 
-
     const transact = {
-        "buy_order": "ordenCompra12345678",
-        "session_id": "sesion1234557545",
+        "buy_order": `O-123`,
+        "session_id": `S-123`,
         "amount": totalBoleta,
         "return_url": "http://apirestaurant.duckdns.org:8081/api/webpay/info"
     }
@@ -61,31 +68,58 @@ export const ModalPay = () => {
     const tiempoTranscurrido = Date.now();
     const hoy = new Date(tiempoTranscurrido);
 
-    // const transactDb = {
-    //     "fecha": hoy.toLocaleDateString(), // "14/6/2020",
-    //     "idCliente": 1,
-    //     "idEmpleado": 
-    // }
+    // console.log(hoy.toLocaleString())
+
+    const transactDb = {
+        "fecha": hoy.toLocaleString(), // "14/6/2020 29-06-2021 22:53:24",
+        "idCliente": 'a',
+        "idEmpleado": pedido[0].idEmpleado,
+        "total": totalBoleta,
+        "numMesa": pedido[0].numMesa
+    }
 
     const handlePayWebPay = async (transact) => {
 
-        const resultWebPay = await actionWebpay(transact);
-        token = resultWebPay.token;
-        url = resultWebPay.url;
+        if (totalBoleta === 0) {
+
+            Swal.fire('Aviso', 'No hay cobros por hacer', 'info');
+            dispatch(uiCloseModal());
+
+        } else {
+
+            const resultWebPay = await actionWebpay(transact);
+
+            if (!resultWebPay) {
+
+                Swal.fire('¡UPS!', 'Algo salió mal con el pago, llame al garzón para solucionarlo', 'error');
+
+            }else {
+
+                token = resultWebPay.token;
+                url = resultWebPay.url;
+
+                await tansactPagoDb(transactDb);
+
+                const divParent = document.getElementById('funcWebPay');
+                divParent.innerHTML = `"<form className="container" id="formId" name="formWebPay" action=${url} method="POST">
+                                            <input type="hidden" name="token_ws" value=${token} />
+                                        </form>"`;
+                document.formWebPay.submit();
+            }
 
 
-
-        const divParent = document.getElementById('funcWebPay');
-
-        divParent.innerHTML = `"<form className="container" id="formId" name="formWebPay" action=${url} method="POST">
-                                    <input type="hidden" name="token_ws" value=${token} />
-                                </form>"`;
-        document.formWebPay.submit();
+        }
     }
 
     const handlePayCash = (e) => {
-        e.preventDefault();
-        Swal.fire('Aviso', 'Aviso entregado, espere a que el garzón venga', 'info');
+
+        if (totalBoleta === 0) {
+            Swal.fire('Aviso', 'No hay cobros por hacer', 'info');
+            dispatch(uiCloseModal());
+        } else {
+            e.preventDefault();
+            Swal.fire('Aviso', 'Aviso entregado, espere a que el garzón venga', 'info');
+        }
     }
 
     const closeModal = () => {
@@ -103,46 +137,45 @@ export const ModalPay = () => {
             overlayClassName="modal-fondo"
             contentLabel="Example Modal"
         >
-            <h1>Pre Cuenta Mesa Nº {mesa}</h1>
+            <h1 id="tituloPrecuenta">Pre Cuenta Mesa Nº {mesa}</h1>
             <br />
             <div>
-                <div className="scroll-modal ">
+                <div className="scroll-modal precuentaPedido">
                     {
                         platos.map((oneProduct, i) => (
 
                             <div
                                 key={oneProduct.id}
-                                className=""
+                                className="pedidoOrden "
                             >
-                                <p className="text-center m-cero"> Pedido Nº: {i + 1}</p>
-                                <div className=" ">
+                                <div className="tituloLeft"><p id="tituloPedido" className="pedidoOrden m-cero "> Pedido Nº: {i + 1}</p></div>
+                                
+                                <div className="row pascalCase ">
                                     {
-                                        oneProduct.pedidoMesa.map((element, i) => (
+                                        oneProduct.pedidoMesa.map((element, ii) => (
 
-                                            <div
+                                            <p
                                                 key={element.id}
-                                                className=""
+                                                className="nombreContadorModelPay"
                                             >
-                                                <p className="text-center m-cero"> {element.name.toLowerCase()}</p>
-
-
-                                            </div>
+                                                {element.name.toLowerCase()}&#58;&nbsp;{element.counter}&nbsp;
+                                            </p>
                                         ))
                                     }
                                 </div>
-                                <div class="text-right">Total de Pedido: ${oneProduct.total}</div>
+                                <div class="pedidoOrden tituloRight">Total de Pedido: ${oneProduct.total}</div>
                             </div>
                         ))
                     }
-                    <div class="text-right">
+                    <p class="pedidoOrden tituloRight2">
                         Monto total a Pagar: ${totalBoleta}
-                    </div>
+                    </p>
                 </div>
             </div>
             <div id="funcWebPay">
 
             </div>
-            <div className="container">
+            <div className="containerModelPayButton">
                 <button
                     type="submit"
                     className="btn btn-outline-primary btn-block"
@@ -151,8 +184,7 @@ export const ModalPay = () => {
                     <i className="far fa-credit-card"></i>
                     <span> Pagar WebPay</span>
                 </button>
-            </div>
-            <div className="container">
+            
                 <button
                     type="submit"
                     className="btn btn-outline-primary btn-block"
