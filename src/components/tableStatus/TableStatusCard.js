@@ -23,35 +23,35 @@ export const TablesStatusCard = ({
 
     return (
         <div>
-            <div className="contenedor">
+            <div className="contenedorTablero">
 
-                <div className="carta" >
-                    <div className="cuerpo">
+                <div className="cartaTablero" >
+                    <div className="cuerpoTablero">
 
-                        <h3 id="bordeMesa">
+                        <h3 id="bordeMesaTablero">
                             Nº Mesa : {numMesa}
                         </h3>
-                        <h3 id="bordePedido">
+                        <h3 id="bordePedidoTablero">
                             Pedido :
                             {pedidoMesaParse.map(
                                 name =>
-                                    <h3 className="text-pedido">
+                                    <h3 className="text-pedidoTablero">
                                         # {name.name.toLowerCase()} = {name.counter}
                                     </h3>
                             )}
 
                         </h3>
-                        <h3 id="bordetotal">
+                        <h3 id="bordetotalTablero">
                             Total : $ {total}
                         </h3>
                     </div>
-                    <div className="footer" >
-                        <h3 id="bordeCocina">
+                    <div className="footerTablero" >
+                        <h3 id="bordeCocinaTablero">
                             {estadoCocina}
                         </h3>
 
                     </div>
-                    <button classname="button" onClick={() => handleClick(id)}>
+                    <button id="button-Tablero" onClick={() => handleClick(id)}>
                         Despachar
                     </button>
                 </div>

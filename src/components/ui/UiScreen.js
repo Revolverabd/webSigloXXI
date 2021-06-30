@@ -7,8 +7,8 @@ export const UiScreen = () => {
     return (
         <div>
             <NavBar />
+            <h1>Bienvenido a Restaurant Siglo XXI</h1>
             <Carrousel />
-            <h1>Presentación del retaurant</h1>
 
             <Footer />
         </div>

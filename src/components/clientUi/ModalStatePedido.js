@@ -30,7 +30,11 @@ export const ModalStatePedido = () => {
     let platos = [];
 
     const totalBoleta = calculaTotalBoleta(pedido);
-    
+
+    <div class="auto" id="auto">
+        No Oculta
+    </div>
+
     pedido.forEach(product => {
 
         if (product.pedidoMesa !== 'NO ASIGNADO') {
@@ -51,7 +55,6 @@ export const ModalStatePedido = () => {
         dispatch(uiCloseViewPedido());
     }
 
-
     return (
         <Modal
             isOpen={modalViewPedido}
@@ -66,7 +69,7 @@ export const ModalStatePedido = () => {
             <h1>Mis Pedidos</h1>
             <br />
             <div>
-            <div className="scroll-modal precuentaPedido">
+                <div className="scroll-modal precuentaPedido">
                     {
                         platos.map((oneProduct, i) => (
 
@@ -74,11 +77,11 @@ export const ModalStatePedido = () => {
                                 key={oneProduct.id}
                                 className="pedidoOrden "
                             >
-                                <div className="tituloLeft"><p id="tituloPedido" className="pedidoOrden m-cero "> Pedido NÂº: {i + 1}</p></div>
-                                
+                                <div className="tituloLeft"><p id="tituloPedido" className="pedidoOrden m-cero "> Pedido Nº: {i + 1 } Estado {oneProduct.estadoCocina}</p></div>
+
                                 <div className="row pascalCase ">
                                     {
-                                        oneProduct.pedidoMesa.map((element, ii) => (
+                                        oneProduct.pedidoMesa.map((element) => (
 
                                             <p
                                                 key={element.id}
@@ -97,6 +100,10 @@ export const ModalStatePedido = () => {
                         Monto total a Pagar: ${totalBoleta}
                     </p>
                 </div>
+            </div>
+
+            <div className = "pedidoOrden text-center" hidden={totalBoleta === 0 ? false : true}>
+                <h1>NO HAY PEDIDOS</h1>
             </div>
 
         </Modal>

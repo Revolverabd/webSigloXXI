@@ -96,49 +96,59 @@ export const Counter = () => {
     return (
 
         <ul className="list-group list-group-flush text-center ">
-            {
-                listProduct.map((oneProduct) => (
-                    <li
-                        key={oneProduct.id}
-                        className="imagenlistaproducto"
-                    >
-                        <p className="text-center m-cero"> {oneProduct.name}</p>
-                        <p className="text-center m-cero"> ${oneProduct.precio}</p>
-                        <p className="text-center m-cero">Sub Total {oneProduct.subTotal}</p>
-                        <p className="text-center m-cero">Cantidad {oneProduct.counter}</p>
+        {
+            listProduct.map((oneProduct) => (
+                <div
+                    key={oneProduct.id}
+                    className="listaproducto"
+                >
+                    <div>
 
-                        <button
-                            className="btn btn-secondary"
-                            type="submit"
-                            onClick={() => handleDecreaseByOne(oneProduct.id)}
-                        >
-                            -
-                        </button>
-                        <button
-                            className="btn btn-secondary"
-                            type="submit"
-                            onClick={() => handleResetProduct(oneProduct.id)}
-                        >
-                            Reset
-                        </button>
-                        <button
-                            className="btn btn-secondary"
-                            type="submit"
-                            onClick={() => handleIncreaseByOne(oneProduct.id)}
-                        >
-                            +
-                        </button>
-                        <button
-                            className="btn btn-secondary"
-                            type="submit"
-                            onClick={() => handleClickDelete(oneProduct.id)}
-                        >
-                            Quitar
-                        </button>
-                    </li>
-                ))
-            }
-        </ul>
+                        <div className="margenTituloListProleft">
+                            <h5 className=" "> {oneProduct.name}</h5>
+                            <h5 className="text-left "> ${oneProduct.precio}</h5>
+                        </div>
+                        <div className="margenTituloListPro">
+                            <h5 className=" ">Sub Total: ${oneProduct.subTotal}</h5>
+                            <div className="divBotonListPro">
+                                <button
+                                    className="botonListPro Left"
+                                    type="submit"
+                                    onClick={() => handleDecreaseByOne(oneProduct.id)}
+                                >
+                                    -
+                                </button>
+                                <button className="botonListPro count">{oneProduct.counter}</button>
+                                
+                                <button
+                                    className="botonListPro"
+                                    type="submit"
+                                    onClick={() => handleIncreaseByOne(oneProduct.id)}
+                                >
+                                    +
+                                </button>
+                                <button
+                                className="botonListProV"
+                                type="submit"
+                                onClick={() => handleResetProduct(oneProduct.id)}
+                            >
+                                Reset
+                            </button>
+                                <button
+                                    className="botonListPro Right "
+                                    type="submit"
+                                    onClick={() => handleClickDelete(oneProduct.id)}
+                                >
+                                    <i class='fas'>&#xf2ed;</i>
+                                </button>
+                            </div>
+                        </div>
 
+                    </div>
+
+                </div>
+            ))
+        }
+    </ul>
     )
 }

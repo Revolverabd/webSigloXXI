@@ -1,10 +1,9 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import Swal from 'sweetalert2';
+
 import {
     changeStateTable,
 } from '../../actions/diningUiAction';
-
-
-// import "./diningUiStyle.css"
 
 export const TablesCard = ({
     Id,
@@ -19,44 +18,84 @@ export const TablesCard = ({
 
     const dispatch = useDispatch();
 
-    // const { active } = useSelector(state => state.diningRoom);
+    const { role } = useSelector(state => state.auth);
+    // const { tables } = useSelector(state => state.diningRoom);
+
+    // console.log(tables)
 
     const table = {
         CapacidadMesa: CapacidadMesa,
         IdEmpleado: IdEmpleado,
-        IdEstadoMesa: EstadoMesa
+        IdEstadoMesa: EstadoMesa,
     }
 
     const dataPedido = {
-        numMesa: NumeroMesa, 
-        pedidoMesa: "NO ASIGNADO", 
-        total: 0, 
-        estado: 0, 
-        estadoCocina:"NO ASIGNADO" 
+        numMesa: NumeroMesa,
+        pedidoMesa: "NO ASIGNADO",
+        total: 0,
+        estado: 0,
+        estadoCocina: "NO ASIGNADO"
     }
-    
+
     const handleClickEstadoHabilitada = () => {
 
-        table.IdEstadoMesa = 1;
-        dispatch(changeStateTable(NumeroMesa, table));
+        if (EstadoMesa === 'HABILITADA') {
+
+            if (role === 1 || role === 5) {
+                table.IdEstadoMesa = 1;
+                dispatch(changeStateTable(NumeroMesa, table));
+            } else {
+                Swal.fire('Denegada', 'No tiene permisos para ejecutar esta acción', 'error');
+            }
+
+        } else {
+            Swal.fire('¡UPS!', `Mesa se encuentra asignada ${EstadoMesa}`, 'info');
+        }
     }
 
     const handleClickEstadoOcupada = () => {
 
-        table.IdEstadoMesa = 3;
-        dispatch(changeStateTable(NumeroMesa, table, dataPedido));
+        if (EstadoMesa === 'HABILITADA') {
+
+            if (role === 1 || role === 5) {
+                table.IdEstadoMesa = 3;
+                dispatch(changeStateTable(NumeroMesa, table, dataPedido));
+            } else {
+                Swal.fire('Denegada', 'No tiene permisos para ejecutar esta acción', 'error');
+            }
+        } else {
+            Swal.fire('¡UPS!', `Mesa se encuentra asignada ${EstadoMesa}`, 'info');
+        }
     }
 
     const handleClickEstadoDeshabilitada = () => {
 
-        table.IdEstadoMesa = 2;
-        dispatch(changeStateTable(NumeroMesa, table));
+        if (EstadoMesa === 'HABILITADA') {
+
+            if (role === 1 || role === 5) {
+                table.IdEstadoMesa = 2;
+                dispatch(changeStateTable(NumeroMesa, table));
+            } else {
+                Swal.fire('Denegada', 'No tiene permisos para ejecutar esta acción', 'error');
+            }
+        } else {
+            Swal.fire('¡UPS!', `Mesa se encuentra asignada ${EstadoMesa}`, 'info');
+        }
     }
 
     const handleClickEstadoReservada = () => {
 
-        table.IdEstadoMesa = 4;
-        dispatch(changeStateTable(NumeroMesa, table));
+        if (EstadoMesa === 'HABILITADA') {
+
+            if (role === 1 || role === 5) {
+                table.IdEstadoMesa = 4;
+                dispatch(changeStateTable(NumeroMesa, table));
+            } else {
+                Swal.fire('Denegada', 'No tiene permisos para ejecutar esta acción', 'error');
+            }
+        } else {
+            Swal.fire('¡UPS!', `Mesa se encuentra asignada ${EstadoMesa}`, 'info');
+        }
     }
 
 
@@ -100,8 +139,6 @@ export const TablesCard = ({
                         Reservada
                     </button>
                 </div>
-
-
             </div>
         </div>
 

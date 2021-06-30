@@ -1,6 +1,5 @@
 import React from 'react';
 import Modal from 'react-modal';
-import { uuid } from 'uuidv4';
 import Swal from 'sweetalert2';
 
 import {
@@ -58,9 +57,16 @@ export const ModalPay = () => {
 
     const totalBoleta = calculaTotalBoleta(pedido);
 
+
+
+
+    let numero = Math.floor((Math.random() * (999 - 100 + 1)) + 1);
+
+    // console.log(numero);
+
     const transact = {
-        "buy_order": `O-123`,
-        "session_id": `S-123`,
+        "buy_order": `O-${numero}`,
+        "session_id": `S-${numero}`,
         "amount": totalBoleta,
         "return_url": "http://apirestaurant.duckdns.org:8081/api/webpay/info"
     }
@@ -93,7 +99,7 @@ export const ModalPay = () => {
 
                 Swal.fire('¡UPS!', 'Algo salió mal con el pago, llame al garzón para solucionarlo', 'error');
 
-            }else {
+            } else {
 
                 token = resultWebPay.token;
                 url = resultWebPay.url;
@@ -149,7 +155,7 @@ export const ModalPay = () => {
                                 className="pedidoOrden "
                             >
                                 <div className="tituloLeft"><p id="tituloPedido" className="pedidoOrden m-cero "> Pedido Nº: {i + 1}</p></div>
-                                
+
                                 <div className="row pascalCase ">
                                     {
                                         oneProduct.pedidoMesa.map((element, ii) => (
@@ -184,7 +190,7 @@ export const ModalPay = () => {
                     <i className="far fa-credit-card"></i>
                     <span> Pagar WebPay</span>
                 </button>
-            
+
                 <button
                     type="submit"
                     className="btn btn-outline-primary btn-block"

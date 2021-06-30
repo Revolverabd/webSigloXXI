@@ -3,6 +3,7 @@ import React from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import { LoginScreen } from '../components/auth/LoginScreen';
 import { ClientUiScreen } from '../components/clientUi/ClientUiScreen';
+import { Pago } from '../components/ui/Pago';
 import { UiScreen } from '../components/ui/UiScreen';
 
 
@@ -20,6 +21,12 @@ export const PbiRouter = () => {
                 <Route
                     exact path="/pbi/client"
                     component={ClientUiScreen}
+                // isAuthenticated={!!uid}
+                />
+         
+                <Route
+                    exact path="/pbi/pago"
+                    component={Pago}
                 // isAuthenticated={!!uid}
                 />
 

@@ -59,7 +59,6 @@ export const ModalPedido = () => {
         dispatch(uiCloseModalPedido());
     }
 
-
     return (
         <Modal
             isOpen={modalPedido}
@@ -92,7 +91,6 @@ export const ModalPedido = () => {
                     }
                 </ul>
             </div>
-
 
             <div className="container">
 

@@ -29,9 +29,9 @@ export const TableStatusScreen = () => {
 
         <div className="cuerpo2">
             <NavBarDashboar />
-            <div className="container"> 
+            <div className="container">
 
-                <h1 id = "tituloTablero">Tablero de estado de Pedidos</h1>
+                <h1 id="tituloTablero">Tablero de estado de Pedidos</h1>
 
                 <ul className="row">
                     {

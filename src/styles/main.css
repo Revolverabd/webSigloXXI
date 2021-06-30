@@ -110,10 +110,76 @@
     font-weight: 600;
     text-decoration: none;
 }
+/**
+* COUNTER.JS STYLES
+**/
+
+.botonListPro {
+    background-color: orange;
+    color: black;
+    border: none;
+    border-color: rgb(0, 0, 0);
+    outline:none;
+
+}
+
+.botonListProV{
+    background-color: rgb(88, 195, 78);
+    color: black;
+    border: none;
+    border-color: rgb(0, 0, 0);
+    outline:none;
+}
+
+.margenTituloListPro{
+    float: right;
+    margin: 10px;   
+}
+.margenTituloListProleft{
+    float: left;   
+    margin: 10px;   
+}
+
+.botonListPro:focus {
+    outline: 0 ;
+    background-color: rgb(255, 123, 0);
+}
+
+.botonListPro.count{
+    background-color:rgba(224, 224, 224, 0.479);
+    font-weight: 700;
+}
+.botonListPro.Left {
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+
+}
+.botonListPro.Right {
+    color: rgb(165, 165, 165);
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    background-color: rgb(187, 17, 17);        
+}
+
+.listaproducto {
+    background-color: rgba(255, 255, 255, 0.219);
+    color: white;
+    border-top: 3px solid black;
+    border-bottom: 3px solid black;
+    width: 100%;
+    border-radius: 20px;
+
+}
+
+.divBotonListPro{
+}
+
+
 
 /**
 * CLIENT SCREEN STYLES
 **/
+
 
 .divcard {
     height: 90%;
@@ -510,12 +576,12 @@ $color4: #db6623;
 $color5: #3e5eb3;
 $color6: #aa9e5c; */
 
-/* 
+
 .pp{
     background-color: #fa0000;
   }
   
-  .carta{
+  .cartaTablero{
     background-color: #3e5eb3;
     font-family:Arial, Helvetica, sans-serif;
     color: white;
@@ -525,17 +591,17 @@ $color6: #aa9e5c; */
     height: 100%;
     border-radius: 15px;
   }
-  .contenedor{
+  .contenedorTablero{
     padding : 10px;
     height: 100%;
     
   }
-  .text-pedido{
+  .text-pedidoTablero{
     text-transform: capitalize;
     font-size: 18px;
     padding : 5px;
   }
-  .footer{
+  .footerTablero{
     background-color: #3e5eb3;
     font-weight:700;
     color: white;
@@ -547,13 +613,13 @@ $color6: #aa9e5c; */
     width: 100%;
     text-align: center;
   }
-  .cuerpo{
+  .cuerpoTablero{
     padding-top:10px;
     padding-left: 10px;
     padding-right: 10px;
     min-width: 250px;
   }
-  #bordeMesa{
+  #bordeMesaTablero{
     color:rgb(202, 201, 201);
     text-align: center;
     background-color: rgb(69, 84, 149);
@@ -562,7 +628,7 @@ $color6: #aa9e5c; */
     border-color: #2d3d6b;
   }
   
-  #bordePedido{
+  #bordePedidoTablero{
     color:rgb(202, 201, 201);
     text-align: left;
     background-color:rgb(44, 68, 175);
@@ -574,7 +640,7 @@ $color6: #aa9e5c; */
     padding-bottom: 10px;
   
   }
-  #bordetotal{
+  #bordetotalTablero{
     color:rgb(202, 201, 201);
     text-align: center;
     border-radius: 10px;
@@ -584,7 +650,7 @@ $color6: #aa9e5c; */
     background-color: rgb(51, 91, 156);
   }
   
-  #bordeCocina{
+  #bordeCocinaTablero{
     color:rgb(202, 201, 201);
     text-align: center;
     border-radius: 10px;
@@ -596,7 +662,7 @@ $color6: #aa9e5c; */
     margin-left: 5%;
   }
   
-  button{
+  #button-Tablero{
     border-top: 3px solid;
     border-left: none;
     border-right: none;
@@ -614,15 +680,24 @@ $color6: #aa9e5c; */
     margin-bottom: 10px;
     text-align: center;
   }
-  button:focus { 
+  #button-Tablero:focus { 
     outline:black; 
     background-color: #2d3d6b;
     color: white;
   }
   
-*/
+  .cuerpo2{
+    background-image: url(https://lh4.googleusercontent.com/proxy/omy1zo5P_8ANPu274Ixc4LOaYNuaw3KfTt9DVGZQUBlZfae5gdG3drLrUjF6QUUjuZh95YSfGiQwuJYYgipLWuEkxlGffYC8pHetoA=s0-d);
+    background-repeat: no-repeat;
+    width: 100%;
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: cover;
+    background-color: #464646;
+    height: 1900px;
+  }
 
-/*   
+   
   #tituloTablero{
     font-weight:700;
     color: white;
@@ -639,16 +714,7 @@ $color6: #aa9e5c; */
   .container {
     padding-top:15px;
   }
-  .cuerpo2{
-    background-image: url(https://lh4.googleusercontent.com/proxy/omy1zo5P_8ANPu274Ixc4LOaYNuaw3KfTt9DVGZQUBlZfae5gdG3drLrUjF6QUUjuZh95YSfGiQwuJYYgipLWuEkxlGffYC8pHetoA=s0-d);
-    background-repeat: no-repeat;
-    width: 100%;
-    background-position: center center;
-    background-attachment: fixed;
-    background-size: cover;
-    background-color: #464646;
-    height: 1900px;
-  }
+  
   
   .row{
     display:flex;
@@ -656,8 +722,4 @@ $color6: #aa9e5c; */
     grid-auto-rows: 100%;
     grid-gap: 10px;
     grid-auto-flow: row dense;
-  } */
-
-/**
-* UI SCREEN STYLES
-**/
+  } 

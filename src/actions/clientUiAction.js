@@ -224,7 +224,6 @@ export const tansactPagoDb = async (transactDb) => {
 
 
 
-
 //DISPATCHERS
 const clientUiLoaded = (products) => ({
     type: types.clientUiLoaded,

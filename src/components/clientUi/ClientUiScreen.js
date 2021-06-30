@@ -196,7 +196,6 @@ export const ClientUiScreen = () => {
 
                         <Counter />
 
-
                         <button
                             disabled={btnState}
                             className="btn btn-info"
@@ -206,7 +205,6 @@ export const ClientUiScreen = () => {
                         >
                             Realizar pedido
                         </button>
-
 
                         <ModalPedido />
 
