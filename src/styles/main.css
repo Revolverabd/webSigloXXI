@@ -182,13 +182,11 @@
 
 
 .divcard {
-    height: 90%;
-    width: 31%;
+    height: 100%;
+    width: 32.5%;
+    padding: 15px;
 }
 
-.paddingtop {
-    padding-top: 20px;
-}
 
 .box {
     background-image: url('https://world-pizza.it/wp-content/uploads/2019/05/pizza4-slider-bg.jpg');
@@ -322,7 +320,7 @@
     background-color: rgba(0, 0, 0, 0.616);
     border-radius: 10px;
     color: white;
-    width: 97.6%;
+    width: 96.8%;
     position: absolute;
     
 }
@@ -350,6 +348,19 @@
     text-align: center;
 }
 
+#titulo3 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    background-color: rgba(255, 255, 255, 0.294);
+    border-radius: 10px;
+    color: white;
+    font-size: 30px;
+    text-align: center;
+}
+
+.backGroundListPro{
+    background-color: black;
+}
 .imagenlistaproducto {
     background-color: rgba(255, 255, 255, 0.219);
     color: white;
@@ -486,9 +497,51 @@
 /**
 * DASHBOARD SCREEN STYLES
 **/
+.dashboarImg{
+    
+    background-image: url(https://www.wallpapertip.com/wmimgs/70-703115_chef-wallpapers-top-beautiful-chef-images-65-high.jpg);
+    background-repeat: no-repeat;
+    width: 100%;
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: cover;
+    background-color: #464646;
+    height: 1900px;
+    color: white;
+}
+.dashboarTituloCenter{
+    
+    text-align: center;
+    padding-top: 15px;
+   
+      
+}
+#dashboarEstiloTitulo{
+    background-color: rgba(0, 0, 0, 0.664);
+    border-radius: 25px;
+    padding: 10px;
+    font-size:4vw;
+    
+}
+.dashboarFloatLeft{
+    
+    
+}
 
+.hijo{
+    width: 50%;
+    background-color: rgba(0, 0, 0, 0.664);
+    border-radius: 25px;
+    padding: 10px;
+    
+    margin: auto;
+    margin-top: 15vw;
+}
 
-
+#dashboarEstiloParrago{
+    font-size:3vw;
+    
+}
 /**
 * DINING-ROOM SCREEN STYLES
 **/
@@ -506,6 +559,7 @@
 
 .centered {
     text-align: center;
+    color: white;
 }
 
 .padingAll {
@@ -556,6 +610,7 @@
     font-size: 20px;
     color: rgb(255, 255, 255);
     background-color: #464646;
+    
 }
 
 .boton_2:hover {
@@ -699,12 +754,47 @@ $color6: #aa9e5c; */
 
    
   #tituloTablero{
+      text-align: center;
+    font-size:50px;
+    padding-left: 20px;
+    padding-right: 20px;
     font-weight:700;
     color: white;
     background-color: rgba(141, 141, 141, 0.424);
-    width: 60%;
-    margin-left: 20%;
+    
     border-radius : 30px;
+  }
+
+  #tituloTableroMesaRoom{
+    text-align: center;
+    font-size:30px;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-weight:700;
+    color: white;
+    background-color: rgb(11, 148, 34);
+    
+    border-radius : 30px;
+  }
+
+  #tituloTablero2{
+    font-weight:700;
+    color: white;
+    background-color: rgba(141, 141, 141, 0.424);
+    font-size: 40px;
+    border-radius : 30px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  #tituloTableroMesa{
+    font-weight:700;
+    color: white;
+    background-color: rgba(141, 141, 141, 0.424);
+    font-size: 30px;
+    border-radius : 30px;
+    padding-left: 10px;
+    padding-right: 10px;
   }
   
   .container h1{
@@ -723,3 +813,38 @@ $color6: #aa9e5c; */
     grid-gap: 10px;
     grid-auto-flow: row dense;
   } 
+
+
+  /*dadsd*/
+.backGroudCarrusel{
+    height:100%;
+}
+.white-space{
+      white-space: nowrap;
+  }
+.containerCarrusel{
+    height: 100%;
+    width: 100%;
+    margin: auto;
+}
+
+.carruselTamaño{
+    height: 100%;
+    width: 100%;
+}
+.carruselBorde{
+    height: 100%;
+    width: 100%;
+}
+.bordeTopHome{
+    border-top: 10px solid;
+    border-bottom: 10px solid;
+    border-color: rgb(37, 37, 37);
+}
+#tituloHome{
+    margin: 0px;
+}
+.containerTituloHome{
+text-align: center;
+
+}

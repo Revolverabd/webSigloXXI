@@ -5,12 +5,21 @@ import { Carrousel } from './Carrousel';
 
 export const UiScreen = () => {
     return (
-        <div>
+        <div className="backGroudCarrusel" >
             <NavBar />
-            <h1>Bienvenido a Restaurant Siglo XXI</h1>
-            <Carrousel />
+            <div className="bordeTopHome bg-dark text-center text-white">
+                <h1 id="tituloHome">Bienvenido a Restaurant Siglo XXI</h1>
+            </div>
+            <div className="">
 
-            <Footer />
+                <div className="containerCarrusel">
+                    <Carrousel />
+                </div>
+
+
+                <Footer />
+            </div>
+
         </div>
     )
 }

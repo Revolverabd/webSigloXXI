@@ -5,12 +5,15 @@ import { Link } from 'react-router-dom'
 import { useDispatch } from 'react-redux';
 import { startLogin } from '../../actions/authAction';
 import { useForm } from '../../hooks/useForm';
-import { GoogleIn } from './GoogleIn';
-import { GoogleOut } from './GoogleOut';
+// import { GoogleIn } from './GoogleIn';
+// import { GoogleOut } from './GoogleOut';
 
 export const LoginScreen = () => {
 
     const dispatch = useDispatch();
+
+    // const {  } = useSelector(state => state.authGoogle);
+    
 
     const [formLoginValues, handleLoginInputChange] = useForm({
         lCorreo: 'i.enriquez@rsxxi.cl',
@@ -35,7 +38,7 @@ export const LoginScreen = () => {
                         to="/pbi"
                     >  Volver
                     </Link>
-                    <h3>Ingreso</h3>
+                    <h3>Ingreso Personal</h3>
                     <form onSubmit={handleLogin}>
                         <div className="form-group">
                             <input
@@ -64,15 +67,9 @@ export const LoginScreen = () => {
                                 type="submit"
                                 className="btnSubmit"
                                 value="Login"
-                            />
-                            <div className="form-group">
-                                <h3>Ingreso Clientes</h3>
-                                <GoogleIn />
-
-                            </div>
+                            />   
                         </div>
                     </form>
-                    <GoogleOut />
                 </div>
             </div>
         </div>

@@ -19,9 +19,6 @@ export const TablesCard = ({
     const dispatch = useDispatch();
 
     const { role } = useSelector(state => state.auth);
-    // const { tables } = useSelector(state => state.diningRoom);
-
-    // console.log(tables)
 
     const table = {
         CapacidadMesa: CapacidadMesa,
@@ -103,44 +100,43 @@ export const TablesCard = ({
 
         <div className="padingAll" >
 
-            <div >
-                <div className="centered">
-                    <div>
-                        <span id="" >Mesa Nº {NumeroMesa}</span>
-                    </div>
-                </div>
-                <div >
-                    <button
-                        className="boton-state-deactive"
-                        type="submit"
-                        onClick={handleClickEstadoHabilitada}
-                    >
-                        Habilitada
-                    </button>
-                    <button
-                        className="boton-state-deactive"
-                        type="submit"
-                        onClick={handleClickEstadoOcupada}
-                    >
-                        Asignada
-                    </button>
-                    <button
-                        className="boton-state-deactive"
-                        type="submit"
-                        onClick={handleClickEstadoDeshabilitada}
-                    >
-                        Deshabilitada
-                    </button>
-                    <button
-                        className="boton-state-deactive"
-                        type="submit"
-                        onClick={handleClickEstadoReservada}
-                    >
-                        Reservada
-                    </button>
-                </div>
-            </div>
+
+        <div className="centered">
+            <span id="tituloTableroMesa" >Mesa Nº {NumeroMesa}</span>
         </div>
+        <div >
+            <button
+                className="boton-state-deactive"
+                type="submit"
+                onClick={handleClickEstadoHabilitada}
+            >
+                Habilitada
+            </button>
+            <button
+                className="boton-state-deactive"
+                type="submit"
+                onClick={handleClickEstadoOcupada}
+            >
+                Asignada
+            </button>
+            <button
+                className="boton-state-deactive"
+                type="submit"
+                onClick={handleClickEstadoDeshabilitada}
+            >
+                Deshabilitada
+            </button>
+            <button
+                className="boton-state-deactive"
+                type="submit"
+                onClick={handleClickEstadoReservada}
+            >
+                Reservada
+            </button>
+        </div>
+
+
+    </div>
 
     )
 }

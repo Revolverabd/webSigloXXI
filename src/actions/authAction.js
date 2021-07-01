@@ -52,6 +52,7 @@ export const startChecking = () => {
 
 const checkingFinish = () => ({ type: types.authCheckingFinish });
 
+
 export const startGoogleLogin = (Correo, googleId, Nombre, tokenId) => {
     return async (dispatch) => {
 
@@ -60,14 +61,29 @@ export const startGoogleLogin = (Correo, googleId, Nombre, tokenId) => {
 
         if (body.msg === 'OK') {
 
-            localStorage.setItem('token', body.token);
-            localStorage.setItem('token-init-date', new Date().getTime());
-
             dispatch(loginGoogle({
                 msg: body.msg,
                 idGoogle: body.id,
                 token: body.token,
+                name: body.name,
+                picture: body.picture,
+                email: body.email,
             }));
+
+            localStorage.setItem('token', body.token);
+            localStorage.setItem('token-init-date', new Date().getTime());
+            localStorage.setItem('name', body.name);
+            localStorage.setItem('img', body.picture);
+
+            localStorage.setItem('checking', body);
+            
+
+            setTimeout(function () {
+
+                window.location.href = "/pbi/client";
+
+            }, 1000);
+
         } else {
             Swal.fire('Error', body.msg, 'error');
         }
@@ -75,6 +91,8 @@ export const startGoogleLogin = (Correo, googleId, Nombre, tokenId) => {
 }
 
 
+
+//DISPATCHERS
 const login = (user) => ({
     type: types.authLogin,
     payload: user
@@ -84,7 +102,6 @@ const loginGoogle = (user) => ({
     type: types.authLoginGoogle,
     payload: user
 });
-
 
 export const startLogout = () => {
 

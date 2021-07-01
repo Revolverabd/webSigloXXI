@@ -112,18 +112,18 @@ export const ModalPay = () => {
                                         </form>"`;
                 document.formWebPay.submit();
             }
-
-
+            
         }
     }
 
-    const handlePayCash = (e) => {
+    const handlePayCash = async(e) => {
 
         if (totalBoleta === 0) {
             Swal.fire('Aviso', 'No hay cobros por hacer', 'info');
             dispatch(uiCloseModal());
         } else {
             e.preventDefault();
+            await tansactPagoDb(transactDb);
             Swal.fire('Aviso', 'Aviso entregado, espere a que el garzón venga', 'info');
         }
     }

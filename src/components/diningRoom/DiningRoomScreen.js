@@ -21,25 +21,32 @@ export const DiningRoomScreen = () => {
     }, [dispatch])
 
     return (
-        <div>
+        <div className="cuerpo2 ">
             <NavBarDashboar />
-            <h1>Dining Room</h1>
+            <div className="centered">
+                <span id="tituloTablero2">Dining Room</span>
+            </div>
+            <div className="">
 
-            <ul className="row text-center ">
-                {
-                    orderTables.map((table) => (
-                        <li id="deleteStyle" 
-                            key={table.Id}
-                        >
-                            <TablesCard
+
+                <ul className="row m-cero ">
+                    {
+                        orderTables.map((table) => (
+                            <li id="deleteStyle"
                                 key={table.Id}
-                                {...table}
-                            />
-                            <p className="text-center m-cero"> {table.EstadoMesa}</p>
-                        </li>
-                    ))
-                }
-            </ul>
+                            >
+                                <TablesCard
+                                    key={table.Id}
+                                    {...table}
+                                />
+                                <div className="centered">
+                                    <span id="tituloTableroMesaRoom" className="  m-cero"> {table.EstadoMesa}</span>
+                                </div>
+                            </li>
+                        ))
+                    }
+                </ul>
+            </div>
         </div>
 
     )

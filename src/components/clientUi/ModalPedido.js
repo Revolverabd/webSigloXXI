@@ -60,7 +60,8 @@ export const ModalPedido = () => {
     }
 
     return (
-        <Modal
+
+<Modal
             isOpen={modalPedido}
             // onAfterOpen={afterOpenModal}
             onRequestClose={closeModal}
@@ -72,25 +73,30 @@ export const ModalPedido = () => {
         >
             <h1>Pedido</h1>
             <br />
-            <div>
-                <ul className=" ">
+            <div className="">
+                <div className="scroll-modal precuentaPedido ">
                     {
                         listProduct.map((oneProduct) => (
 
-                            <li
+                            <div
                                 key={oneProduct.id}
-                                className=""
+                                className="pedidoOrden"
                             >
-                                <p className="text-center m-cero"> {oneProduct.name}</p>
-                                <p className="text-center m-cero"> ${oneProduct.precio}</p>
-                                <p className="text-center m-cero">Sub Total {oneProduct.subTotal}</p>
-                                <p className="text-center m-cero">Cantidad {oneProduct.counter}</p>
+                                <div className="">
+                                    <p id="tituloPedido" className="pedidoOrden m-cero ">{oneProduct.name}</p>
+                                </div>
+                                <div className="row ">
+                                    <p className="nombreContadorModelPay"> ${oneProduct.precio}</p>
 
-                            </li>
+                                    <p className="nombreContadorModelPay">Cantidad {oneProduct.counter}</p>
+                                    <p className="nombreContadorModelPay">Sub Total: ${oneProduct.subTotal}</p>
+                                </div>
+                            </div>
                         ))
                     }
-                </ul>
+                </div>
             </div>
+
 
             <div className="container">
 

@@ -29,10 +29,10 @@ export const TableStatusScreen = () => {
 
         <div className="cuerpo2">
             <NavBarDashboar />
-            <div className="container">
-
-                <h1 id="tituloTablero">Tablero de estado de Pedidos</h1>
-
+            <div className="">
+                <div className="text-center">
+                    <span id="tituloTablero" >Tablero de estado de Pedidos</span>
+                </div>
                 <ul className="row">
                     {
                         data1.map((orderss) => (
@@ -48,9 +48,6 @@ export const TableStatusScreen = () => {
                 </ul>
             </div>
         </div>
-
-
-
-
+        
     )
 }
