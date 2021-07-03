@@ -816,6 +816,10 @@ $color6: #aa9e5c; */
 
 
   /*dadsd*/
+.fondoTextCarrusel{
+    background-color: rgba(0, 0, 0, 0.76);
+    border-radius: 100px;
+}
 .backGroudCarrusel{
     height:100%;
 }
@@ -847,4 +851,24 @@ $color6: #aa9e5c; */
 .containerTituloHome{
 text-align: center;
 
+}
+
+/*Pago*/
+
+.pagoDivImg{
+    background-image: url("https://res.cloudinary.com/rsxxi/image/upload/v1625176096/Imagenes/images_dovbha.svg");
+
+    background-repeat: no-repeat;
+    width: 100%;
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: cover;
+    background-color: #464646;
+    height: 100vh;
+}
+
+
+/* espacio de boton login google */
+.espacio{
+    margin-left: 10px;
 }

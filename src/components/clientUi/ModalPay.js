@@ -33,7 +33,6 @@ export const ModalPay = () => {
     const dispatch = useDispatch();
     const { modalPay, pedido } = useSelector(state => state.clientUi);
 
-
     let platos = [];
     let mesa = "";
 
@@ -57,9 +56,6 @@ export const ModalPay = () => {
 
     const totalBoleta = calculaTotalBoleta(pedido);
 
-
-
-
     let numero = Math.floor((Math.random() * (999 - 100 + 1)) + 1);
 
     // console.log(numero);
@@ -73,12 +69,15 @@ export const ModalPay = () => {
 
     const tiempoTranscurrido = Date.now();
     const hoy = new Date(tiempoTranscurrido);
+    let email = localStorage.getItem('email');
 
-    // console.log(hoy.toLocaleString())
+    if (!email) {
+        email = 'invitado@gmail.com';
+    }
 
     const transactDb = {
         "fecha": hoy.toLocaleString(), // "14/6/2020 29-06-2021 22:53:24",
-        "idCliente": 'a',
+        "emailCliente": email,
         "idEmpleado": pedido[0].idEmpleado,
         "total": totalBoleta,
         "numMesa": pedido[0].numMesa
@@ -103,6 +102,8 @@ export const ModalPay = () => {
 
                 token = resultWebPay.token;
                 url = resultWebPay.url;
+                
+                await localStorage.clear();
 
                 await tansactPagoDb(transactDb);
 
@@ -112,11 +113,11 @@ export const ModalPay = () => {
                                         </form>"`;
                 document.formWebPay.submit();
             }
-            
+
         }
     }
 
-    const handlePayCash = async(e) => {
+    const handlePayCash = async (e) => {
 
         if (totalBoleta === 0) {
             Swal.fire('Aviso', 'No hay cobros por hacer', 'info');
@@ -158,7 +159,7 @@ export const ModalPay = () => {
 
                                 <div className="row pascalCase ">
                                     {
-                                        oneProduct.pedidoMesa.map((element, ii) => (
+                                        oneProduct.pedidoMesa.map((element) => (
 
                                             <p
                                                 key={element.id}

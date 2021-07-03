@@ -190,6 +190,8 @@ export const uiSendPedido = (pedido) => {
     }
 }
 
+
+
 //PAGO WEBPAY
 export const actionWebpay = async (transact) => {
 
@@ -215,6 +217,20 @@ export const tansactPagoDb = async (transactDb) => {
 
     try {
         await fetchNotToken(`pago/create`, transactDb, 'POST');
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export const finalTable = async (numMesa) => {
+
+    try {
+        await fetchNotToken(`pago/final/${numMesa}`,{}, 'POST');
+
+        setTimeout(function () {
+            window.location.href = "/";
+        }, 1000);
+
     } catch (error) {
         console.log(error);
     }

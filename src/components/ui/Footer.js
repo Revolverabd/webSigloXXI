@@ -1,6 +1,4 @@
 import React from 'react';
-import Card from 'react-bootstrap/Card';
-import Button from 'react-bootstrap/Button';
 
 export const Footer = () => {
     return (
@@ -44,7 +42,7 @@ export const Footer = () => {
                 <section class="mb-4">
                     <p>
                         Cocina rica, hecha con mucha ilusión, para gente que le gusta comer y disfrutar cada bocado de la vida…..
-                        Cinco Sentidos es un lugar íntimo en el que puedes saborear a gusto y conversar de forma relajada.
+                        Restaurant Siglo XXI es un lugar íntimo en el que puedes saborear a gusto y conversar de forma relajada.
                         Hacemos todo de forma casera y procuramos poner siempre un toque personal en nuestro trabajo diario,
                         por eso somos un restaurante artesanal.
                         Tenemos una bonita barra para tomar tapas recién hechas, y un salón con siete mesas en el que puedes

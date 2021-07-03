@@ -8,7 +8,7 @@ import {
 export const TablesCard = ({
     Id,
     NumeroMesa,
-    CapacidadMesa,
+    CapacidadMesa, 
     IdEmpleado,
     RutEmpleado,
     NombreEmpleado,

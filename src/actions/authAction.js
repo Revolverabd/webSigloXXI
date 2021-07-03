@@ -73,16 +73,13 @@ export const startGoogleLogin = (Correo, googleId, Nombre, tokenId) => {
             localStorage.setItem('token', body.token);
             localStorage.setItem('token-init-date', new Date().getTime());
             localStorage.setItem('name', body.name);
-            localStorage.setItem('img', body.picture);
+            localStorage.setItem('email', body.email);
 
-            localStorage.setItem('checking', body);
-            
+            // setTimeout(function () {
 
-            setTimeout(function () {
+            //     window.location.href = "/pbi/client";
 
-                window.location.href = "/pbi/client";
-
-            }, 1000);
+            // }, 1000);
 
         } else {
             Swal.fire('Error', body.msg, 'error');

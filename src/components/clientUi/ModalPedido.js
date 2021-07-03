@@ -29,7 +29,7 @@ Modal.setAppElement('#root');
 
 export const ModalPedido = () => {
 
-    const { modalPedido, listProduct, pedido } = useSelector(state => state.clientUi)
+    const { modalPedido, listProduct, pedido } = useSelector(state => state.clientUi);
     const dispatch = useDispatch();
 
     const total = calculaTotalPedido(listProduct);

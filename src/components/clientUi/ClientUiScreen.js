@@ -30,7 +30,6 @@ export const ClientUiScreen = () => {
     const dispatch = useDispatch();
 
     const { products, listProduct, pedido } = useSelector(state => state.clientUi);
-    const { name } = useSelector(state => state.authGoogle);
 
     //establece la mesa asignada al terminal
     if (pedido[0].estado === 0) {
@@ -85,7 +84,7 @@ export const ClientUiScreen = () => {
     }, [dispatch]);
 
     return (
-        <div className=" divimagecabecera addScroll ">
+<div className=" divimagecabecera addScroll ">
             <div className="box"> </div>
             <NavBarClient />
 
@@ -141,7 +140,7 @@ export const ClientUiScreen = () => {
 
                         <div>
                             <h1 id="titulo">Bebestibles</h1>
-                            <div className="card-columns">
+                            <div className="row">
                                 {
                                     data2.map(product => (
                                         <ProductCard
@@ -154,7 +153,7 @@ export const ClientUiScreen = () => {
                         </div>
 
                         <h1 id="titulo">Carnes</h1>
-                        <div className="card-columns">
+                        <div className="row">
                             {
                                 data3.map(product => (
                                     <ProductCard
@@ -165,7 +164,7 @@ export const ClientUiScreen = () => {
                             }
                         </div>
                         <h1 id="titulo">Pastas</h1>
-                        <div className="card-columns">
+                        <div className="row">
                             {
                                 data4.map(product => (
                                     <ProductCard
@@ -176,7 +175,7 @@ export const ClientUiScreen = () => {
                             }
                         </div>
                         <h1 id="titulo">Postres</h1>
-                        <div className="card-columns">
+                        <div className="row">
                             {
                                 data5.map(product => (
                                     <ProductCard

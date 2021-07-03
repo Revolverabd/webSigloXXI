@@ -21,15 +21,7 @@ export const NavBar = () => {
                             exact
                             to="/pbi/client"
                         >
-                            Ingreso como anonimo
-                        </NavLink>
-                        <NavLink
-                            activeClassName="active"
-                            className="nav-item nav-link"
-                            exact
-                            to="/pbi/login/client"
-                        >
-                            Ingreso como cliente google
+                            Carta
                         </NavLink>
                     </ul>
                 </div>
